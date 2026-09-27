@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Washington Fields 12th Ward Preparedness</title>
+<meta name="description" content="Our ward's emergency plan, gathering points, and a simple way to share the skills you can offer or the help you may need.">
+
+<!-- Link preview for the ward Facebook post -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Washington Fields 12th Ward Preparedness">
+<meta property="og:description" content="Our ward emergency plan, gathering points, and a simple way to share your skills or needs.">
+<meta property="og:url" content="https://ward-preparedness.vercel.app/">
+<meta property="og:image" content="https://ward-preparedness.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231f3a5f'/><path d='M16 6 26 14v12H6V14z' fill='%23f2b544'/></svg>">
+<style>
+  :root {
+    --bg: #faf8f4;
+    --surface: #ffffff;
+    --text: #1d2430;
+    --muted: #5a6474;
+    --line: #e4dfd5;
+    --brand: #1f3a5f;
+    --brand-ink: #ffffff;
+    --accent: #b86e00;
+    --accent-soft: #fdf1dc;
+    --fill-bg: #fff4b8;
+    --fill-line: #d9a400;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12161d; --surface: #1a2029; --text: #e9ecf1; --muted: #a3adbb;
+      --line: #2c3440; --brand: #8fb3e0; --brand-ink: #0d1520;
+      --accent: #f2b544; --accent-soft: #2a2416; --fill-bg: #4a3d0a; --fill-line: #c9a227;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12161d; --surface: #1a2029; --text: #e9ecf1; --muted: #a3adbb;
+    --line: #2c3440; --brand: #8fb3e0; --brand-ink: #0d1520;
+    --accent: #f2b544; --accent-soft: #2a2416; --fill-bg: #4a3d0a; --fill-line: #c9a227;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 18px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: var(--brand); }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+  /* Placeholders the bishopric fills in. Search the file for class="fill". */
+  .fill {
+    background: var(--fill-bg); border-bottom: 2px dashed var(--fill-line);
+    padding: 0 4px; border-radius: 3px;
+  }
+
+  header.hero { background: var(--brand); color: var(--brand-ink); padding: 56px 0 48px; }
+  .hero h1 { margin: 0 0 8px; font-size: clamp(30px, 6vw, 44px); line-height: 1.15; }
+  .hero .sub { margin: 0 0 24px; font-size: 20px; opacity: .92; }
+  .hero blockquote { margin: 0 0 28px; padding-left: 16px; border-left: 3px solid var(--accent); font-style: italic; opacity: .95; }
+  .hero blockquote cite { display: block; font-style: normal; font-size: 15px; opacity: .8; margin-top: 4px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; padding: 12px 20px; border-radius: 10px; font-weight: 600;
+    text-decoration: none; border: 2px solid transparent; cursor: pointer; font-size: 17px;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  :root[data-theme="dark"] .btn-primary { color: #1a1206; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn-primary { color: #1a1206; } }
+  .btn-ghost { background: transparent; color: var(--brand-ink); border-color: currentColor; font-family: inherit; }
+
+  nav.toc { background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+  nav.toc ul { list-style: none; margin: 0; padding: 10px 0; display: flex; gap: 20px; overflow-x: auto; white-space: nowrap; }
+  nav.toc a { text-decoration: none; font-size: 16px; font-weight: 600; }
+
+  section { padding: 44px 0 8px; }
+  h2 { font-size: 28px; margin: 0 0 12px; }
+  h3 { font-size: 20px; margin: 24px 0 8px; }
+  .lead { color: var(--muted); margin-top: 0; }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin: 16px 0; }
+  .card.callout { background: var(--accent-soft); border-color: transparent; }
+
+  ol.steps { padding-left: 0; list-style: none; counter-reset: s; margin: 0; }
+  ol.steps li { counter-increment: s; position: relative; padding: 0 0 14px 48px; }
+  ol.steps li::before {
+    content: counter(s); position: absolute; left: 0; top: 0; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; font-weight: 700; font-size: 16px;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 15px; color: var(--muted); font-weight: 600; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .grid .card { margin: 0; }
+  .grid .card h3 { margin-top: 0; }
+  .link-card { display: block; text-decoration: none; color: inherit; }
+  .link-card:hover { border-color: var(--brand); }
+  .link-card .go { color: var(--brand); font-weight: 600; }
+
+  .signs { display: flex; gap: 12px; flex-wrap: wrap; margin: 8px 0; }
+  .sign { font-weight: 800; font-size: 22px; padding: 6px 18px; border-radius: 8px; color: #fff; }
+  .sign.ok { background: #237a3b; } .sign.help { background: #b3261e; }
+
+
+  /* Food & water calculator */
+  .calc-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin-bottom: 16px; }
+  .calc-inputs label { display: block; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .calc-inputs small { display: block; color: var(--muted); font-weight: 400; }
+  .calc input[type=number] {
+    width: 100%; font: inherit; padding: 8px 10px; border-radius: 8px;
+    border: 1px solid var(--line); background: var(--bg); color: var(--text);
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 12px; }
+  .chip {
+    font: inherit; font-size: 15px; padding: 6px 14px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--bg); color: var(--text);
+  }
+  .chip[aria-pressed="true"] { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
+  .calc-days { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .calc-days input { max-width: 120px; }
+  .check { display: flex; gap: 8px; align-items: center; font-size: 16px; margin-top: 4px; }
+  .results { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .big { font-size: 34px; font-weight: 800; line-height: 1.1; color: var(--brand); }
+  .results table td:last-child { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .note { font-size: 15px; color: var(--muted); }
+
+  footer { margin-top: 48px; padding: 28px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
+  .print-only { display: none; }
+
+  @media print {
+    :root { --bg: #fff; --surface: #fff; --text: #000; --muted: #333; --line: #bbb; --brand: #000; --brand-ink: #000; --accent-soft: #fff; }
+    body { font-size: 11.5pt; line-height: 1.4; }
+    nav.toc, .actions, .no-print, footer .no-print { display: none !important; }
+    .print-only { display: block; }
+    header.hero { background: none; padding: 0 0 8px; border-bottom: 2px solid #000; }
+    .hero blockquote { border-color: #000; }
+    section { padding: 10px 0 0; }
+    #family, #share .grid, #other .grid .card p + p { display: none; }
+    #share .lead, #share h2, #share .callout, #survey h2, #survey .lead, #survey .card, #calculator, .hero blockquote { display: none; }
+    h2, .lead { break-after: avoid; }
+    #contact { break-before: page; }
+    th, td { padding: 5px 8px; }
+    footer { margin-top: 16px; padding: 8px 0 0; font-size: 9.5pt; }
+    .signs .sign { font-size: 14pt; padding: 2px 12px; }
+    .hero .sub { display: none; }
+    .grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .grid .card h3 { font-size: 11.5pt; margin-bottom: 4px; }
+    .grid .card p { margin: 0; font-size: 10pt; }
+    h2 { font-size: 16pt; } h3 { font-size: 12.5pt; margin-top: 10px; }
+    .card { border: 1px solid #999; padding: 10px 12px; margin: 8px 0; break-inside: avoid; }
+    .fill { background: none; border-bottom: 1px solid #000; }
+    ol.steps li { padding-left: 32px; padding-bottom: 6px; }
+    ol.steps li::before { width: 22px; height: 22px; background: #000; color: #fff; font-size: 11pt; }
+    .sign { border: 2px solid #000; color: #000; background: #fff !important; }
+    a { color: #000; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Washington Fields 12th Ward Preparedness</h1>
+    <p class="sub">Our ward plan, and a simple way to help each other when it matters.</p>
+    <blockquote>
+      “If ye are prepared ye shall not fear.”
+      <cite>Doctrine and Covenants 38:30</cite>
+    </blockquote>
+    <div class="actions">
+      <a class="btn btn-primary" href="#share">Share your skills or needs</a>
+      <a class="btn btn-ghost" href="#survey">Take the preparedness survey</a>
+      <button class="btn btn-ghost" type="button" onclick="window.print()">Print our plan</button>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <div class="wrap">
+    <ul>
+      <li><a href="#first-hour">After an earthquake</a></li>
+      <li><a href="#gather">Where to gather</a></li>
+      <li><a href="#contact">Who to contact</a></li>
+      <li><a href="#other">Other emergencies</a></li>
+      <li><a href="#share">Skills &amp; needs</a></li>
+      <li><a href="#survey">Survey</a></li>
+      <li><a href="#calculator">Calculator</a></li>
+      <li><a href="#family">Family preparedness</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section id="first-hour">
+    <h2>After an earthquake: the first hour</h2>
+    <p class="lead">Southern Utah sits on active faults, including the Hurricane Fault. A strong earthquake is the emergency most likely to affect all of us at once. Phones, power, and roads may be down. Here is what we will each do.</p>
+    <div class="card">
+      <ol class="steps">
+        <li><strong>Drop, cover, and hold on</strong> until the shaking stops. Expect aftershocks.</li>
+        <li><strong>Check your household</strong> for injuries. Give first aid where you can.</li>
+        <li><strong>Check for hazards.</strong> Turn off the gas <em>only</em> if you smell gas or hear hissing. Watch for downed power lines and broken glass.</li>
+        <li><strong>Put your sign in the front window</strong> so neighbors and your ward contact can see it from the street:
+          <div class="signs"><span class="sign ok">OK</span><span class="sign help">HELP</span></div>
+        </li>
+        <li><strong>Check on the neighbors</strong> around you, especially anyone who lives alone or has limited mobility.</li>
+        <li><strong>Report to your ward contact</strong> or come to the gathering point (below). Text instead of calling; texts get through when calls don't.</li>
+        <li><strong>Listen for official updates</strong> on a battery or crank radio: <span class="fill">[local station]</span>.</li>
+      </ol>
+    </div>
+    <p>Call 911 only for life-threatening emergencies so lines stay open for the people who need them most.</p>
+  </section>
+
+  <section id="gather">
+    <h2>Where to gather</h2>
+    <p class="lead">If you can't reach anyone, or you need help, come to the gathering point. Leaders will check here first. After an earthquake, wait outside in the open, away from buildings and power lines.</p>
+    <div class="card">
+      <table>
+        <tbody>
+          <tr><th>Everyone</th><td><strong>The meetinghouse parking lot on Log Lane</strong><br>near 251 W 2000 S</td></tr>
+          <tr><th>Backup, if the meetinghouse is unsafe</th><td><strong>The grass field with the pavilion and swing set</strong><br>on 20 East, between Primrose Lane and Orchard Lane, by the stone &ldquo;Fields&rdquo; entrance sign</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Who to contact</h2>
+    <p class="lead">In an emergency, your first contact is your ministering brother or sister, or the area contact listed here. Save these numbers in your phone and write them on your printed copy.</p>
+    <div class="card">
+      <table>
+        <tbody>
+          <tr><th>Ward emergency preparedness</th><td><span class="fill">[Name, phone]</span></td></tr>
+          <tr><th>Bishop</th><td><span class="fill">[Name, phone]</span></td></tr>
+          <tr><th>Elders quorum president</th><td><span class="fill">[Name, phone]</span></td></tr>
+          <tr><th>Relief Society president</th><td><span class="fill">[Name, phone]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card callout">
+      <strong>Pick an out-of-state contact.</strong> After a local disaster it is often easier to reach someone far away than someone across town. Choose one relative or friend outside Utah and make sure everyone in your family knows their number.
+    </div>
+    <p class="print-only">My out-of-state contact: ______________________________ &nbsp; Phone: ____________________</p>
+  </section>
+
+  <section id="other">
+    <h2>Other emergencies</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Wildfire or evacuation</h3>
+        <p>Keep a go-bag by the door with medications, documents, chargers, and a change of clothes. Leave as soon as you're told to; don't wait. Let your ward contact know where you went.</p>
+      </div>
+      <div class="card">
+        <h3>Extreme heat or summer power outage</h3>
+        <p>A summer outage can become dangerous within hours. Know where you'd go to stay cool, keep extra water on hand, and check on older neighbors and anyone who relies on powered medical equipment. Never run a generator indoors or in the garage.</p>
+      </div>
+      <div class="card">
+        <h3>Flash flood</h3>
+        <p>Never drive or walk through flowing water, even if it looks shallow. Stay out of washes and low crossings during and after storms, including storms miles away.</p>
+      </div>
+      <div class="card">
+        <h3>Water outage</h3>
+        <p>Store at least one gallon per person per day for two weeks. Your water heater tank holds drinkable water too (turn off its gas or power before draining it).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="share">
+    <h2>Share your skills or needs</h2>
+    <p class="lead">This is the part only our ward can do. Knowing who has a generator or medical training, and who may need extra help, lets us look after each other quickly.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Skills and resources</h3>
+        <p>Medical or first-aid training, ham radio, chainsaw, generator, trailer, building trades, childcare, languages, and anything else you could offer.</p>
+      </div>
+      <div class="card">
+        <h3>Needs</h3>
+        <p>Mobility limits, medical equipment that needs power, medications that need refrigeration, living alone, or no transportation.</p>
+      </div>
+    </div>
+    <div class="card callout">
+      <strong>Your privacy:</strong> Only the bishopric and the ward emergency preparedness leaders see what you share. Needs are never posted publicly. You can ask them to update or remove your information at any time.
+    </div>
+    <p class="no-print"><a class="btn btn-primary" id="form-link" href="#" target="_blank" rel="noopener">Open the form</a></p>
+    <p class="print-only">Share your skills or needs online: forms.gle/gZVnFFsvJEUMPPtM8</p>
+  </section>
+
+  <section id="survey">
+    <h2>How prepared is your household?</h2>
+    <p class="lead">Take a few minutes to check where your family stands on water, food, kits, and plans. It's anonymous: no names, no addresses. Your answers, together with everyone else's, show the ward leaders where we're strong and where classes or help would do the most good.</p>
+    <div class="card">
+      <p>About a dozen quick questions. You'll likely finish with a short list of things to work on, and that's the point. Not sure how much you have compared with what you need? Use the <a href="#calculator">food &amp; water calculator</a> first.</p>
+      <p class="no-print"><a class="btn btn-primary" id="survey-link" href="#" target="_blank" rel="noopener">Take the survey</a></p>
+    </div>
+    <p class="print-only">Take the anonymous preparedness survey online: forms.gle/j41nPV3mEBQNdYiw7</p>
+  </section>
+
+  <section id="calculator">
+    <h2>Food &amp; water calculator</h2>
+    <p class="lead">How much should your household store? Enter your family and how long you want to be covered.</p>
+    <div class="card calc">
+      <div class="calc-inputs">
+        <div><label for="c-adults">Adults &amp; teens<small>age 12 and up</small></label><input id="c-adults" type="number" min="0" max="30" value="2" inputmode="numeric"></div>
+        <div><label for="c-kids">Children<small>age 4 to 11</small></label><input id="c-kids" type="number" min="0" max="30" value="0" inputmode="numeric"></div>
+        <div><label for="c-little">Little ones<small>age 0 to 3</small></label><input id="c-little" type="number" min="0" max="30" value="0" inputmode="numeric"></div>
+      </div>
+      <label for="c-days" style="font-size:15px;font-weight:600">How long?</label>
+      <div class="chips" role="group" aria-label="Preset lengths">
+        <button type="button" class="chip" data-days="3">72 hours</button>
+        <button type="button" class="chip" data-days="14">2 weeks</button>
+        <button type="button" class="chip" data-days="90">3 months</button>
+        <button type="button" class="chip" data-days="365">1 year</button>
+      </div>
+      <div class="calc-days"><input id="c-days" type="number" min="1" max="730" value="14" inputmode="numeric"> <span>days</span></div>
+      <label class="check"><input id="c-heat" type="checkbox"> Plan for summer heat (double the drinking water)</label>
+    </div>
+
+    <div class="results">
+      <div class="card">
+        <h3>Water</h3>
+        <div class="big" id="r-water"></div>
+        <p id="r-water-detail" class="note"></p>
+      </div>
+      <div class="card">
+        <h3>Food</h3>
+        <div class="big" id="r-meals"></div>
+        <p id="r-meals-detail" class="note"></p>
+      </div>
+    </div>
+
+    <div class="card" id="r-basics-card">
+      <h3>Longer-term basics</h3>
+      <p class="note" id="r-basics-intro"></p>
+      <table>
+        <tbody id="r-basics"></tbody>
+      </table>
+    </div>
+    <p class="note">These are common planning estimates, not official requirements. Children are counted as 70% of an adult and little ones as 50%. Water is 1 gallon per person per day for drinking and basic hygiene, stored for up to two weeks; pets need their own. Start where you can: a little at a time is how every family's supply gets built.</p>
+  </section>
+
+  <section id="family">
+    <h2>Family preparedness</h2>
+    <p class="lead">The Church provides detailed guidance on food and water storage, 72-hour kits, finances, and emotional resilience. Start here:</p>
+    <div class="grid">
+      <a class="card link-card" href="https://www.churchofjesuschrist.org/life/preparedness?lang=eng" target="_blank" rel="noopener">
+        <h3>Preparedness for individuals and families</h3>
+        <p>Food storage, water, emergency kits, finances, and more.</p>
+        <span class="go">Open resource →</span>
+      </a>
+      <a class="card link-card" href="https://www.churchofjesuschrist.org/study/manual/stake-and-ward-preparedness?lang=eng" target="_blank" rel="noopener">
+        <h3>Stake and ward preparedness</h3>
+        <p>Step-by-step planning guidance for ward and stake leaders.</p>
+        <span class="go">Open resource →</span>
+      </a>
+      <a class="card link-card" href="https://www.ready.gov/kit" target="_blank" rel="noopener">
+        <h3>Build a kit (Ready.gov)</h3>
+        <p>A printable checklist of emergency supply basics.</p>
+        <span class="go">Open resource →</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Maintained by the Washington Fields 12th Ward for our members and neighbors. Questions or corrections: <a href="mailto:wf12thprep@gmail.com">wf12thprep@gmail.com</a>. Last updated <span class="fill">[date]</span>.</p>
+    <p>This is not an official website of The Church of Jesus Christ of Latter-day Saints.</p>
+  </div>
+</footer>
+
+<script>
+  // Paste each Google Form's share link here. Until one is set, its button says the form is coming.
+  const FORM_URL = "https://forms.gle/gZVnFFsvJEUMPPtM8";    // Skills & needs (see FORM-QUESTIONS.md)
+  const SURVEY_URL = "https://forms.gle/j41nPV3mEBQNdYiw7";  // Anonymous preparedness survey (see SURVEY-QUESTIONS.md)
+  for (const [id, url] of [["form-link", FORM_URL], ["survey-link", SURVEY_URL]]) {
+    const link = document.getElementById(id);
+    if (url) {
+      link.href = url;
+    } else {
+      link.textContent = "Coming soon";
+      link.removeAttribute("href");
+      link.style.opacity = ".6";
+    }
+  }
+  // Food & water calculator. Per adult, per year: common long-term storage planning figures.
+  const BASICS = [
+    ["Grains (wheat, rice, oats, flour, pasta)", 300, "lb"],
+    ["Legumes (dry beans, lentils, split peas)", 60, "lb"],
+    ["Sugar or honey", 60, "lb"],
+    ["Powdered milk", 16, "lb"],
+    ["Cooking oil", 10, "qt"],
+    ["Salt", 8, "lb"],
+  ];
+  const $ = (id) => document.getElementById(id);
+  const num = (id) => Math.max(0, parseInt($(id).value, 10) || 0);
+  const fmt = (n) => n.toLocaleString("en-US", { maximumFractionDigits: n < 10 ? 1 : 0 });
+  const plural = (n, word) => `${fmt(n)} ${word}${n === 1 ? "" : "s"}`;
+
+  function describeDays(d) {
+    if (d === 3) return "72 hours";
+    if (d % 365 === 0) return plural(d / 365, "year");
+    if (d === 90) return "3 months";
+    if (d % 7 === 0 && d < 90) return plural(d / 7, "week");
+    return plural(d, "day");
+  }
+
+  function calc() {
+    const adults = num("c-adults"), kids = num("c-kids"), little = num("c-little");
+    const days = Math.max(1, num("c-days") || 1);
+    const people = adults + kids + little;
+    const eaters = adults + kids * 0.7 + little * 0.5; // adult-equivalents for food
+    const heat = $("c-heat").checked;
+
+    document.querySelectorAll(".chip").forEach((c) =>
+      c.setAttribute("aria-pressed", String(Number(c.dataset.days) === days)));
+
+    // Stored water tops out at two weeks; beyond that, the plan is a way to purify more.
+    const waterDays = Math.min(days, 14);
+    const gallons = people * waterDays * (heat ? 2 : 1);
+    $("r-water").textContent = `${fmt(Math.ceil(gallons))} gallons`;
+    $("r-water-detail").textContent = people === 0 ? "Enter your household above." :
+      `That's about ${plural(Math.ceil(gallons / 5), "5-gallon jug")}` +
+      (gallons >= 55 ? `, or about ${fmt(Math.round(gallons / 55 * 10) / 10)} barrels (55-gallon).` : ".") +
+      (days > 14 ? " This is two weeks of stored water. For longer, add a filter or purification tablets so you can treat more." : "");
+
+    const meals = Math.ceil(people * days * 3);
+    $("r-meals").textContent = `${fmt(meals)} meals`;
+    $("r-meals-detail").textContent = people === 0 ? "" :
+      `About ${fmt(Math.round(eaters * days * 2000 / 1000) * 1000)} calories in all. ` +
+      (days <= 14 ? "For this length, choose ready-to-eat foods that need no cooking or refrigeration."
+                  : "The best start is extra of the everyday foods your family already eats, rotated as you use them.");
+
+    const years = days / 365;
+    $("r-basics-card").hidden = days < 30 || eaters === 0;
+    $("r-basics-intro").textContent =
+      `If you add shelf-stable basics on top of everyday foods, here's roughly what ${describeDays(days)} looks like for your household:`;
+    $("r-basics").innerHTML = BASICS.map(([name, perYear, unit]) =>
+      `<tr><td>${name}</td><td>${fmt(Math.ceil(perYear * eaters * years))} ${unit}</td></tr>`).join("");
+  }
+
+  document.querySelectorAll(".chip").forEach((c) =>
+    c.addEventListener("click", () => { $("c-days").value = c.dataset.days; calc(); }));
+  ["c-adults", "c-kids", "c-little", "c-days", "c-heat"].forEach((id) => $(id).addEventListener("input", calc));
+  calc();
+</script>
+</body>
+</html>
