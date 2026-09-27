@@ -146,6 +146,16 @@
     #share .lead, #share h2, #share .callout, #survey h2, #survey .lead, #survey .card, #calculator, .hero blockquote { display: none; }
     h2, .lead { break-after: avoid; }
     #contact { break-before: page; }
+    #alerts p, #alerts ul { margin: 2px 0; font-size: 10pt; }
+    #alerts ul { display: flex; gap: 18px; list-style: none; padding: 0; }
+    #contact .callout { padding: 4px 12px; font-size: 10pt; }
+    #other .grid .card p { font-size: 9.5pt; }
+    #other .grid { grid-template-columns: repeat(4, 1fr); }
+    #share, #survey { padding: 0; }
+    #contact .lead { display: none; }
+    footer { margin-top: 6px !important; padding-top: 4px !important; border-top: 0; }
+    footer p { margin: 2px 0; }
+    #share .print-only, #survey .print-only { margin: 4px 0; }
     th, td { padding: 5px 8px; }
     footer { margin-top: 16px; padding: 8px 0 0; font-size: 9.5pt; }
     .signs .sign { font-size: 14pt; padding: 2px 12px; }
@@ -211,7 +221,7 @@
         </li>
         <li><strong>Check on the neighbors</strong> around you, especially anyone who lives alone or has limited mobility.</li>
         <li><strong>Report to your ward contact</strong> or come to the gathering point (below). Text instead of calling; texts get through when calls don't.</li>
-        <li><strong>Listen for official updates</strong> on a battery or crank radio: <span class="fill">[local station]</span>.</li>
+        <li><strong>Listen for official updates</strong> on a battery or crank radio: <strong>KDXU 890 AM</strong>, the area's main emergency alert station, or NOAA Weather Radio on <strong>162.475 MHz</strong>.</li>
       </ol>
     </div>
     <p>Call 911 only for life-threatening emergencies so lines stay open for the people who need them most.</p>
@@ -238,13 +248,23 @@
         <tbody>
           <tr><th>Ward emergency preparedness</th><td>Steve Doughty, <a href="tel:+14356197769">(435) 619-7769</a></td></tr>
           <tr><th>Bishop</th><td>Scott Bushar, <a href="tel:+14357051065">(435) 705-1065</a></td></tr>
-          <tr><th>Elders quorum president</th><td>Trey Morris, <a href="tel:+14357054402">(435)705-4402</a></td></tr>
-          <tr><th>Relief Society president</th><td>Andrea Moore, <a href="tel:+14352297375">(435)229-7375</a></td></tr>
+          <tr><th>Elders quorum president</th><td>Trey Morris, <a href="tel:+14357054402">(435) 705-4402</a></td></tr>
+          <tr><th>Relief Society president</th><td>Andrea Moore, <a href="tel:+14352297375">(435) 229-7375</a></td></tr>
         </tbody>
       </table>
     </div>
     <div class="card callout">
       <strong>Pick an out-of-state contact.</strong> After a local disaster it is often easier to reach someone far away than someone across town. Choose one relative or friend outside Utah and make sure everyone in your family knows their number.
+    </div>
+    <div class="card" id="alerts">
+      <h3 style="margin-top:0">Get official alerts on your phone</h3>
+      <p>Washington County Emergency Management sends text alerts. Text a keyword to <strong>888777</strong>:</p>
+      <ul>
+        <li><strong>WASHCOES</strong> for general emergency updates</li>
+        <li><strong>WASHCOFIRE</strong> for fire updates</li>
+        <li><strong>WCFLOOD</strong> for flood warnings</li>
+      </ul>
+      <p style="margin-bottom:0">For evacuations, the county uses the free <strong>Genasys Protect</strong> app: look up your evacuation zone before you need it. More at <a href="https://www.washco.utah.gov/departments/emergency-management/emergency-updates/" target="_blank" rel="noopener">Washington County Emergency Management</a>.</p>
     </div>
     <p class="print-only">My out-of-state contact: ______________________________ &nbsp; Phone: ____________________</p>
   </section>
@@ -370,7 +390,7 @@
 
 <footer>
   <div class="wrap">
-    <p>Maintained by the Washington Fields 12th Ward for our members and neighbors. Questions or corrections: <a href="mailto:wf12thprep@gmail.com">wf12thprep@gmail.com</a>. Last updated <span class="fill">September 27, 2026</span>.</p>
+    <p>Maintained by the Washington Fields 12th Ward for our members and neighbors. Questions or corrections: <a href="mailto:wf12thprep@gmail.com">wf12thprep@gmail.com</a>. Last updated September 27, 2026.</p>
     <p>This is not an official website of The Church of Jesus Christ of Latter-day Saints.</p>
   </div>
 </footer>
