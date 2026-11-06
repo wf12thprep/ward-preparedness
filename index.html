@@ -6,10 +6,9 @@
 <title>Washington Fields 12th Ward Preparedness</title>
 <meta name="description" content="Our ward's emergency plan, gathering points, and a simple way to share the skills you can offer or the help you may need.">
 
-<!-- Link preview for the ward Facebook post -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Washington Fields 12th Ward Preparedness">
-<meta property="og:description" content="Our ward emergency plan, gathering points, and a simple way to share your skills or needs.">
+<meta property="og:description" content="Our ward's emergency plan, gathering points, and a simple way to share the skills you can offer or the help you may need.">
 <meta property="og:url" content="https://ward-preparedness.vercel.app/">
 <meta property="og:image" content="https://ward-preparedness.vercel.app/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -17,171 +16,15 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231f3a5f'/><path d='M16 6 26 14v12H6V14z' fill='%23f2b544'/></svg>">
-<style>
-  :root {
-    --bg: #faf8f4;
-    --surface: #ffffff;
-    --text: #1d2430;
-    --muted: #5a6474;
-    --line: #e4dfd5;
-    --brand: #1f3a5f;
-    --brand-ink: #ffffff;
-    --accent: #b86e00;
-    --accent-soft: #fdf1dc;
-    --fill-bg: #fff4b8;
-    --fill-line: #d9a400;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #12161d; --surface: #1a2029; --text: #e9ecf1; --muted: #a3adbb;
-      --line: #2c3440; --brand: #8fb3e0; --brand-ink: #0d1520;
-      --accent: #f2b544; --accent-soft: #2a2416; --fill-bg: #4a3d0a; --fill-line: #c9a227;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #12161d; --surface: #1a2029; --text: #e9ecf1; --muted: #a3adbb;
-    --line: #2c3440; --brand: #8fb3e0; --brand-ink: #0d1520;
-    --accent: #f2b544; --accent-soft: #2a2416; --fill-bg: #4a3d0a; --fill-line: #c9a227;
-  }
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font: 18px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  }
-  a { color: var(--brand); }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
-
-  /* Placeholders the bishopric fills in. Search the file for class="fill". */
-  .fill {
-    background: var(--fill-bg); border-bottom: 2px dashed var(--fill-line);
-    padding: 0 4px; border-radius: 3px;
-  }
-
-  header.hero { background: var(--brand); color: var(--brand-ink); padding: 56px 0 48px; }
-  .hero h1 { margin: 0 0 8px; font-size: clamp(30px, 6vw, 44px); line-height: 1.15; }
-  .hero .sub { margin: 0 0 24px; font-size: 20px; opacity: .92; }
-  .hero blockquote { margin: 0 0 28px; padding-left: 16px; border-left: 3px solid var(--accent); font-style: italic; opacity: .95; }
-  .hero blockquote cite { display: block; font-style: normal; font-size: 15px; opacity: .8; margin-top: 4px; }
-  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-  .btn {
-    display: inline-block; padding: 12px 20px; border-radius: 10px; font-weight: 600;
-    text-decoration: none; border: 2px solid transparent; cursor: pointer; font-size: 17px;
-  }
-  .btn-primary { background: var(--accent); color: #fff; }
-  :root[data-theme="dark"] .btn-primary { color: #1a1206; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn-primary { color: #1a1206; } }
-  .btn-ghost { background: transparent; color: var(--brand-ink); border-color: currentColor; font-family: inherit; }
-
-  nav.toc { background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
-  nav.toc ul { list-style: none; margin: 0; padding: 10px 0; display: flex; gap: 20px; overflow-x: auto; white-space: nowrap; }
-  nav.toc a { text-decoration: none; font-size: 16px; font-weight: 600; }
-
-  section { padding: 44px 0 8px; }
-  h2 { font-size: 28px; margin: 0 0 12px; }
-  h3 { font-size: 20px; margin: 24px 0 8px; }
-  .lead { color: var(--muted); margin-top: 0; }
-
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin: 16px 0; }
-  .card.callout { background: var(--accent-soft); border-color: transparent; }
-
-  ol.steps { padding-left: 0; list-style: none; counter-reset: s; margin: 0; }
-  ol.steps li { counter-increment: s; position: relative; padding: 0 0 14px 48px; }
-  ol.steps li::before {
-    content: counter(s); position: absolute; left: 0; top: 0; width: 32px; height: 32px; border-radius: 50%;
-    background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; font-weight: 700; font-size: 16px;
-  }
-
-  table { width: 100%; border-collapse: collapse; }
-  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { font-size: 15px; color: var(--muted); font-weight: 600; }
-
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-  #income .grid { grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); }
-  .grid .card { margin: 0; }
-  .grid .card h3 { margin-top: 0; }
-  .link-card { display: block; text-decoration: none; color: inherit; }
-  .link-card:hover { border-color: var(--brand); }
-  .link-card .go { color: var(--brand); font-weight: 600; }
-
-  .signs { display: flex; gap: 12px; flex-wrap: wrap; margin: 8px 0; }
-  .sign { font-weight: 800; font-size: 22px; padding: 6px 18px; border-radius: 8px; color: #fff; }
-  .sign.ok { background: #237a3b; } .sign.help { background: #b3261e; }
-
-
-  /* Food & water calculator */
-  .calc-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin-bottom: 16px; }
-  .calc-inputs label { display: block; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-  .calc-inputs small { display: block; color: var(--muted); font-weight: 400; }
-  .calc input[type=number] {
-    width: 100%; font: inherit; padding: 8px 10px; border-radius: 8px;
-    border: 1px solid var(--line); background: var(--bg); color: var(--text);
-  }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 12px; }
-  .chip {
-    font: inherit; font-size: 15px; padding: 6px 14px; border-radius: 999px; cursor: pointer;
-    border: 1px solid var(--line); background: var(--bg); color: var(--text);
-  }
-  .chip[aria-pressed="true"] { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
-  .calc-days { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .calc-days input { max-width: 120px; }
-  .check { display: flex; gap: 8px; align-items: center; font-size: 16px; margin-top: 4px; }
-  .results { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-  .big { font-size: 34px; font-weight: 800; line-height: 1.1; color: var(--brand); }
-  .results table td:last-child { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .note { font-size: 15px; color: var(--muted); }
-
-  footer { margin-top: 48px; padding: 28px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
-  .print-only { display: none; }
-
-  @media print {
-    :root { --bg: #fff; --surface: #fff; --text: #000; --muted: #333; --line: #bbb; --brand: #000; --brand-ink: #000; --accent-soft: #fff; }
-    body { font-size: 11.5pt; line-height: 1.4; }
-    nav.toc, .actions, .no-print, footer .no-print { display: none !important; }
-    .print-only { display: block; }
-    header.hero { background: none; padding: 0 0 8px; border-bottom: 2px solid #000; }
-    .hero blockquote { border-color: #000; }
-    section { padding: 10px 0 0; }
-    #family, #share .grid, #other .grid .card p + p { display: none; }
-    #share .lead, #share h2, #share .callout, #survey h2, #survey .lead, #survey .card, #calculator, .hero blockquote { display: none; }
-    h2, .lead { break-after: avoid; }
-    #contact { break-before: page; }
-    #alerts p, #alerts ul { margin: 2px 0; font-size: 10pt; }
-    #alerts ul { display: flex; gap: 18px; list-style: none; padding: 0; }
-    #contact .callout, #gather .callout { padding: 4px 12px; font-size: 10pt; }
-    #other .grid .card p { font-size: 9.5pt; }
-    #other .grid { grid-template-columns: repeat(4, 1fr); }
-    #share, #survey { padding: 0; }
-    #contact .lead { display: none; }
-    footer { margin-top: 6px !important; padding-top: 4px !important; border-top: 0; }
-    footer p { margin: 2px 0; }
-    #share .print-only, #survey .print-only { margin: 4px 0; }
-    th, td { padding: 5px 8px; }
-    footer { margin-top: 16px; padding: 8px 0 0; font-size: 9.5pt; }
-    .signs .sign { font-size: 14pt; padding: 2px 12px; }
-    .hero .sub { display: none; }
-    .grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .grid .card h3 { font-size: 11.5pt; margin-bottom: 4px; }
-    .grid .card p { margin: 0; font-size: 10pt; }
-    h2 { font-size: 16pt; } h3 { font-size: 12.5pt; margin-top: 10px; }
-    .card { border: 1px solid #999; padding: 10px 12px; margin: 8px 0; break-inside: avoid; }
-    .fill { background: none; border-bottom: 1px solid #000; }
-    ol.steps li { padding-left: 32px; padding-bottom: 3px; }
-    ol.steps li::before { width: 22px; height: 22px; background: #000; color: #fff; font-size: 11pt; }
-    .sign { border: 2px solid #000; color: #000; background: #fff !important; }
-    a { color: #000; text-decoration: none; }
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 <header class="hero">
   <div class="wrap">
     <h1>Washington Fields 12th Ward Preparedness</h1>
     <p class="sub">Our ward plan, and a simple way to help each other when it matters.</p>
     <blockquote>
-      “If ye are prepared ye shall not fear.”
+      &ldquo;If ye are prepared ye shall not fear.&rdquo;
       <cite>Doctrine and Covenants 38:30</cite>
     </blockquote>
     <div class="actions">
@@ -192,29 +35,22 @@
   </div>
 </header>
 
-<nav class="toc" aria-label="Sections">
+<nav class="toc" aria-label="Pages">
   <div class="wrap">
     <ul>
-      <li><a href="#first-hour">After an earthquake</a></li>
-      <li><a href="#gather">Where to gather</a></li>
-      <li><a href="#contact">Who to contact</a></li>
-      <li><a href="#other">Other emergencies</a></li>
-      <li><a href="#income">If the income stops</a></li>
-      <li><a href="#documents">Money &amp; documents</a></li>
-      <li><a href="#share">Skills &amp; needs</a></li>
-      <li><a href="#survey">Survey</a></li>
-      <li><a href="#calculator">Calculator</a></li>
-      <li><a href="#storage">Food storage</a></li>
+      <li><a href="index.html" aria-current="page">Emergency plan</a></li>
+      <li><a href="food.html">Food &amp; water</a></li>
+      <li><a href="money.html">Money</a></li>
+      <li><a href="resilience.html">Emotional resilience</a></li>
       <li><a href="simulation.html">Practice exercise</a></li>
-      <li><a href="#resilience">Emotional resilience</a></li>
-      <li><a href="#family">Family preparedness</a></li>
+      <li><a href="index.html#share">Skills &amp; needs</a></li>
     </ul>
   </div>
 </nav>
 
 <main class="wrap">
 
-  <section id="first-hour">
+<section id="first-hour">
     <h2>After an earthquake: the first hour</h2>
     <p class="lead">Southern Utah sits on active faults, including the Hurricane Fault. A strong earthquake is the emergency most likely to affect all of us at once. Phones, power, and roads may be down. Here is what we will each do.</p>
     <div class="card">
@@ -233,7 +69,7 @@
     <p>Call 911 only for life-threatening emergencies so lines stay open for the people who need them most.</p>
   </section>
 
-  <section id="gather">
+<section id="gather">
     <h2>Where to gather</h2>
     <p class="lead">If you can't reach anyone, or you need help, come to the gathering point. Leaders will check here first. After an earthquake, wait outside in the open, away from buildings and power lines.</p>
     <div class="card">
@@ -249,7 +85,7 @@
     </div>
   </section>
 
-  <section id="contact">
+<section id="contact">
     <h2>Who to contact</h2>
     <p class="lead">In an emergency, your first contact is your ministering brother or sister, or the area contact listed here. Save these numbers in your phone and write them on your printed copy.</p>
     <div class="card">
@@ -278,7 +114,7 @@
     <p class="print-only">My out-of-state contact: ______________________________ &nbsp; Phone: ____________________</p>
   </section>
 
-  <section id="other">
+<section id="other">
     <h2>Other emergencies</h2>
     <div class="grid">
       <div class="card">
@@ -300,89 +136,34 @@
     </div>
   </section>
 
-  <section id="income" class="no-print">
-    <h2>If the income stops</h2>
-    <p class="lead">For most families, a job loss or a large medical bill is far more likely than an earthquake, and 911 can't help with either. You don't have to do all of this at once. Each step makes a hard season easier.</p>
-    <div class="grid">
+  <section id="more" class="no-print">
+    <h2>Beyond the first hour</h2>
+    <p class="lead">The pages below cover the slower problems &mdash; the ones that show up over weeks and months rather than in the first hour.</p>
+    <div class="grid hub">
       <div class="card">
-        <h3>Less debt</h3>
-        <p>Fewer payments to cover when the paychecks stop.</p>
-        <p><strong>First step:</strong> pay off your smallest debt.</p>
+        <h3>Food &amp; water</h3>
+        <p>Work out how much your household needs, then what to actually buy and what quietly expires first.</p>
+        <p><a href="food.html">Open food &amp; water &rarr;</a></p>
       </div>
       <div class="card">
-        <h3>Lower monthly costs</h3>
-        <p>The less your household needs each month, the longer your money lasts.</p>
-        <p><strong>First step:</strong> lower one monthly bill.</p>
+        <h3>Money</h3>
+        <p>If the income stops, and the cash, insurance and documents a disaster asks for.</p>
+        <p><a href="money.html">Open money &rarr;</a></p>
       </div>
       <div class="card">
-        <h3>Savings</h3>
-        <p>Savings buy you time to find the right next job.</p>
-        <p><strong>First step:</strong> save one month of basic expenses, a little at a time.</p>
+        <h3>Emotional resilience</h3>
+        <p>What sustained stress does to a household, what helps, and where to turn when it is more than that.</p>
+        <p><a href="resilience.html">Open emotional resilience &rarr;</a></p>
       </div>
       <div class="card">
-        <h3>A second way to earn</h3>
-        <p>Jobs change, and some are changing quickly. A second skill gives you somewhere else to turn.</p>
-        <p><strong>First step:</strong> take a class, earn a certificate, learn a trade, or try some side work.</p>
+        <h3>Practice exercise</h3>
+        <p>Walk your family through a scenario before you need to do it for real.</p>
+        <p><a href="simulation.html">Open practice exercise &rarr;</a></p>
       </div>
-    </div>
-    <div class="card callout">
-      <h3 style="margin-top:0">If it happens: the first week</h3>
-      <ul>
-        <li><strong>Talk to the bishop early.</strong> There's no shame in it, and it stays confidential.</li>
-        <li><strong>Apply for unemployment benefits</strong> and list the bills that must be paid.</li>
-        <li><strong>Eat from your pantry.</strong> That's what it's for, and every meal from it is money you don't spend.</li>
-        <li><strong>Tell people you're looking.</strong> Many jobs come through someone you know.</li>
-      </ul>
-    </div>
-    <p>Can you review a résumé, practice interviews, or pass along job leads? Add it under &ldquo;Other&rdquo; in the skills section of the <a href="#share">Skills &amp; Needs form</a>.</p>
-    <div class="grid">
-      <a class="card link-card" href="https://www.churchofjesuschrist.org/life/self-reliance/personal-finances?lang=eng" target="_blank" rel="noopener">
-        <h3>Personal finances</h3>
-        <p>The Church's course on managing money, debt, and savings.</p>
-        <span class="go">Open resource →</span>
-      </a>
-      <a class="card link-card" href="https://www.churchofjesuschrist.org/life/self-reliance/find-a-better-job?lang=eng" target="_blank" rel="noopener">
-        <h3>Find a better job</h3>
-        <p>The Church's course on job hunting, networking, and interviews.</p>
-        <span class="go">Open resource →</span>
-      </a>
     </div>
   </section>
 
-  <section id="documents" class="no-print">
-    <h2>Money and documents in a disaster</h2>
-    <p class="lead">Losing income is one problem. A power outage or a flood is a different one, and it needs different preparation.</p>
-
-    <h3>Cash that works when the systems don't</h3>
-    <p>In a power outage, card readers, ATMs and the networks behind them all fail together. Stores that stay open go cash-only, and nobody can make change for large bills.</p>
-    <p>Keep some cash at home in <strong>small denominations</strong> &mdash; ones, fives and tens. Enough for a few days of fuel, food and incidentals. Keep it somewhere you could still reach if you had to leave in a hurry.</p>
-
-    <h3>The insurance gap most households here have</h3>
-    <div class="card callout">
-      <h3 style="margin-top:0">Worth a phone call this week</h3>
-      <p><strong>Standard homeowner's and renter's policies do not cover flood damage.</strong> Not from a flooded wash, not from runoff, not from a storm drain backing up. Flood coverage is a separate policy, and it typically takes about 30 days to take effect &mdash; which means it cannot be bought once a storm is already in the forecast.</p>
-      <p>Because our hazard here is flash flooding rather than river flooding, homes near washes and drainages carry real exposure even outside mapped flood zones. Ask your agent one direct question: <em>what happens if water enters this house from outside?</em></p>
-    </div>
-    <p>Two other reviews worth doing once a year: whether your dwelling coverage would actually rebuild at today's construction costs, and whether your contents are covered at replacement cost or at depreciated value.</p>
-
-    <h3>Documents you cannot quickly replace</h3>
-    <p>The practical standard is that you could reconstruct your financial life from your phone. Photograph or scan these, then keep them in two places &mdash; one physical copy somewhere safe, one encrypted digital copy you can reach from anywhere.</p>
-    <div class="card">
-      <ul>
-        <li>Birth certificates, Social Security cards, passports, driver's licenses</li>
-        <li>Deed or mortgage, vehicle titles, lease agreements</li>
-        <li>Insurance policies, with policy numbers and your agent's direct line</li>
-        <li>A prescription list with dosages, and immunization records</li>
-        <li>Bank and investment account numbers, with one recent statement from each</li>
-        <li>A room-by-room video walkthrough of the house, for a contents claim</li>
-        <li>Marriage certificate, wills, powers of attorney, advance directives</li>
-      </ul>
-    </div>
-    <p class="note">An afternoon with a phone camera covers most of this. If you do nothing else here, do that.</p>
-  </section>
-
-
-  <section id="share">
+<section id="share">
     <h2>Share your skills or needs</h2>
     <p class="lead">This is the part only our ward can do. Knowing who has a generator or medical training, and who may need extra help, lets us look after each other quickly.</p>
     <div class="grid">
@@ -398,204 +179,21 @@
     <div class="card callout">
       <strong>Your privacy:</strong> Only the bishopric and the ward emergency preparedness leaders see what you share. Needs are never posted publicly. You can ask them to update or remove your information at any time.
     </div>
-    <p class="no-print"><a class="btn btn-primary" id="form-link" href="#" target="_blank" rel="noopener">Open the form</a></p>
+    <p><a class="btn btn-primary" id="form-link" href="#" target="_blank" rel="noopener">Open the form</a></p>
     <p class="print-only">Share your skills or needs online: forms.gle/gZVnFFsvJEUMPPtM8</p>
   </section>
 
-  <section id="survey">
+<section id="survey">
     <h2>How prepared is your household?</h2>
     <p class="lead">Take a few minutes to check where your family stands on water, food, kits, and plans. It's anonymous: no names, no addresses. Your answers, together with everyone else's, show the ward leaders where we're strong and where classes or help would do the most good.</p>
     <div class="card">
-      <p>About a dozen quick questions. You'll likely finish with a short list of things to work on, and that's the point. Not sure how much you have compared with what you need? Use the <a href="#calculator">food &amp; water calculator</a> first.</p>
-      <p class="no-print"><a class="btn btn-primary" id="survey-link" href="#" target="_blank" rel="noopener">Take the survey</a></p>
+      <p>About a dozen quick questions. You'll likely finish with a short list of things to work on, and that's the point. Not sure how much you have compared with what you need? Use the <a href="food.html#calculator">food &amp; water calculator</a> first.</p>
+      <p><a class="btn btn-primary" id="survey-link" href="#" target="_blank" rel="noopener">Take the survey</a></p>
     </div>
     <p class="print-only">Take the anonymous preparedness survey online: forms.gle/j41nPV3mEBQNdYiw7</p>
   </section>
 
-  <section id="calculator">
-    <h2>Food &amp; water calculator</h2>
-    <p class="lead">How much should your household store? Enter your family and how long you want to be covered.</p>
-    <div class="card calc">
-      <div class="calc-inputs">
-        <div><label for="c-adults">Adults &amp; teens<small>age 12 and up</small></label><input id="c-adults" type="number" min="0" max="30" value="2" inputmode="numeric"></div>
-        <div><label for="c-kids">Children<small>age 4 to 11</small></label><input id="c-kids" type="number" min="0" max="30" value="0" inputmode="numeric"></div>
-        <div><label for="c-little">Little ones<small>age 0 to 3</small></label><input id="c-little" type="number" min="0" max="30" value="0" inputmode="numeric"></div>
-      </div>
-      <label for="c-days" style="font-size:15px;font-weight:600">How long?</label>
-      <div class="chips" role="group" aria-label="Preset lengths">
-        <button type="button" class="chip" data-days="3">72 hours</button>
-        <button type="button" class="chip" data-days="14">2 weeks</button>
-        <button type="button" class="chip" data-days="90">3 months</button>
-        <button type="button" class="chip" data-days="365">1 year</button>
-      </div>
-      <div class="calc-days"><input id="c-days" type="number" min="1" max="730" value="14" inputmode="numeric"> <span>days</span></div>
-      <label class="check"><input id="c-heat" type="checkbox"> Plan for summer heat (double the drinking water)</label>
-    </div>
-
-    <div class="results">
-      <div class="card">
-        <h3>Water</h3>
-        <div class="big" id="r-water"></div>
-        <p id="r-water-detail" class="note"></p>
-      </div>
-      <div class="card">
-        <h3>Food</h3>
-        <div class="big" id="r-meals"></div>
-        <p id="r-meals-detail" class="note"></p>
-      </div>
-    </div>
-
-    <div class="card" id="r-basics-card">
-      <h3>Longer-term basics</h3>
-      <p class="note" id="r-basics-intro"></p>
-      <table>
-        <tbody id="r-basics"></tbody>
-      </table>
-    </div>
-    <p class="note">These are common planning estimates, not official requirements. Children are counted as 70% of an adult and little ones as 50%. Water is 1 gallon per person per day for drinking and basic hygiene, stored for up to two weeks; pets need their own. Start where you can: a little at a time is how every family's supply gets built.</p>
-  </section>
-
-  <section id="storage" class="no-print">
-    <h2>Building a longer-term food supply</h2>
-    <p class="lead">The calculator tells you how much. This is what to buy, what quietly expires, and the equipment people forget until the day they need it.</p>
-
-    <h3>Work in calories per bucket</h3>
-    <p>Calorie figures get published per ounce, per cup, per 100 grams and per pound depending on where you look. Mixing those units is the most common mistake in a storage spreadsheet, and families usually end up believing they have far more or far less than they do. Checking against a per-container figure catches it fast.</p>
-    <div class="card">
-      <table>
-        <thead>
-          <tr><th>Staple</th><th>Weight in a 5-gallon bucket</th><th>Calories</th><th>Worth knowing</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Hard red wheat</td><td>37 lb</td><td>55,500</td><td>Useless without a mill</td></tr>
-          <tr><td>White rice</td><td>36 lb</td><td>59,600</td><td>White only &mdash; brown goes rancid in a year</td></tr>
-          <tr><td>Pinto or black beans</td><td>35 lb</td><td>54,600</td><td>See the ten-year note below</td></tr>
-          <tr><td>Lentils</td><td>35 lb</td><td>54,250</td><td>No soaking, fastest to cook</td></tr>
-          <tr><td>Rolled oats</td><td>20 lb</td><td>34,000</td><td>Bulky for the calories</td></tr>
-          <tr><td>Masa harina</td><td>30 lb</td><td>49,000</td><td>Shortest-lived grain</td></tr>
-          <tr><td>Sugar</td><td>35 lb</td><td>61,000</td><td>Keeps indefinitely</td></tr>
-          <tr><td>Honey</td><td>60 lb</td><td>82,700</td><td>Keeps indefinitely</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">A year at 2,000 calories a day is about 730,000 calories per person. Plan closer to 2,500 if you expect to be doing physical work without power, and it rises to roughly 912,500 &mdash; a difference of about three months of food. Decide which you are planning against before you start buying.</p>
-
-    <h3>A plan is only as long as its shortest item</h3>
-    <p>Thirty-year wheat stored beside one-year nuts is not a one-year supply. Part of it expires quietly while nobody is looking.</p>
-    <div class="grid">
-      <div class="card">
-        <h3>25 to 30 years</h3>
-        <p>Wheat berries, white rice, dry beans, lentils, sugar, salt. Honey keeps indefinitely. Sealed in food-grade buckets with oxygen absorbers.</p>
-      </div>
-      <div class="card">
-        <h3>10 to 20 years</h3>
-        <p>Rolled oats, powdered milk, powdered egg, freeze-dried fruit and vegetables. Better in #10 cans than buckets.</p>
-      </div>
-      <div class="card">
-        <h3>1 to 2 years</h3>
-        <p>Nuts, nut butters, masa harina, whole-grain flour, brown rice, cooking oils. The oils in these go rancid. Freezer storage roughly doubles the window.</p>
-      </div>
-      <div class="card">
-        <h3>Under a year</h3>
-        <p>Protein powders, baking powder, fresh-milled flour, most supplements. Rotation items, not storage items.</p>
-      </div>
-    </div>
-
-    <div class="card callout">
-      <h3 style="margin-top:0">The ten-year bean problem</h3>
-      <p>Dry beans stored past roughly a decade develop what is called hard-to-cook syndrome. They never soften no matter how long you boil them, and how well they were sealed makes no difference. Lentils and split peas do not do this. If beans are a large share of your plan, either rotate them or move some of that weight to lentils.</p>
-    </div>
-
-    <h3>The things nobody budgets for</h3>
-    <p>Food in a bucket is not food on a plate. Each of these turns stored staples into something you can actually eat.</p>
-    <ul>
-      <li><strong>A hand grain mill.</strong> Wheat berries without one are birdseed. Buy manual or manual-capable &mdash; an electric-only mill is a bet on the grid staying up.</li>
-      <li><strong>Cooking fuel.</strong> Dry beans need one to two hours of boiling every time. Over months that is hundreds of hours of burner time. A pressure cooker cuts bean cooking by about two-thirds and is the cheapest fuel savings available.</li>
-      <li><strong>Animal feed.</strong> Ten laying hens eat roughly 900 pounds of feed a year &mdash; more tonnage than most families' entire food storage, and it buys eggs rather than calories. Keep chickens for the protein and the morale, but do not count them as a calorie source.</li>
-      <li><strong>Garden inputs.</strong> Seed that stays viable, and nutrient solution for any hydroponic setup. Without the consumables, a grow tower is a planter.</li>
-      <li><strong>Salt, leavening and seasoning.</strong> Bread needs salt. And appetite fatigue is real &mdash; people stop eating monotonous food, so a plan nobody will eat is not a plan.</li>
-    </ul>
-
-    <h3>Water is the harder problem</h3>
-    <p>Two weeks for a family of four is 56 gallons, which is easy and covers the most likely emergency by a wide margin. A year for one person is 365 gallons &mdash; about seven 55-gallon drums for a single adult. Past roughly a month, storage stops being the answer and filtration plus a renewable source becomes the answer. Budget for a gravity filter and spare elements alongside the containers.</p>
-    <p>In this climate, add one more thing: keep stored water out of the heat. A garage that hits 130&deg;F in July degrades plastic containers faster than most people expect.</p>
-
-    <div class="card callout">
-      <h3 style="margin-top:0">One household's worked example</h3>
-      <p>A member of the ward built a full one-year plan for one adult using the method above &mdash; corrected calorie math, shelf-life tiers, home production counted honestly, and a weekly meal plan that reconciles against the stored quantities. Ask at church if you would like to see it.</p>
-      <p class="note" style="margin-bottom:0">It is an example of the arithmetic, not a plan to copy. It is built around one person's body weight, activity level, allergies and tastes, and its nutrient targets and supplement list would be wrong &mdash; in some cases meaningfully wrong &mdash; for a child, for a pregnant or nursing mother, or for anyone managing a health condition. Borrow the structure and build your own numbers.</p>
-    </div>
-  </section>
-
-
-  <section id="exercise" class="no-print">
-    <h2>Practice exercise: what would you do?</h2>
-    <p class="lead">Walk your family through 10 decisions in a fictional worst-case week, then see where your plans have gaps. It takes about 10 minutes. It's only practice; nothing you choose is saved.</p>
-    <p><a class="btn btn-primary" href="simulation.html">Start the exercise</a></p>
-  </section>
-
-  <section id="resilience" class="no-print">
-    <h2>Emotional resilience</h2>
-    <p class="lead">Households rarely come apart in an emergency because they ran out of supplies. They struggle because of what sustained stress does to people, and to the relationships between them.</p>
-
-    <h3>What stress actually does</h3>
-    <p>Under prolonged strain most people experience some mix of disrupted sleep, a shorter fuse, trouble concentrating, physical symptoms with no obvious cause, and either withdrawal or a restless inability to settle. Children often show it as regression &mdash; behavior they had outgrown coming back &mdash; or as stomachaches and headaches rather than anything they can put a name to.</p>
-    <p>These are ordinary responses to hard circumstances. They are not character failures, and they are not evidence that someone is handling things badly. Knowing that ahead of time matters, because a family expecting the irritability is far less likely to read it as a sign that something is wrong between them.</p>
-
-    <h3>What helps</h3>
-    <div class="grid">
-      <div class="card">
-        <h3>Keep the structure</h3>
-        <p>Meals at roughly the same times, consistent bedtimes, Sunday still being Sunday. Routine does more for a household under stress than nearly anything else, and it costs nothing.</p>
-      </div>
-      <div class="card">
-        <h3>Give people jobs</h3>
-        <p>A role counters helplessness directly &mdash; including for children, with real tasks scaled to their age. Idle worry is corrosive.</p>
-      </div>
-      <div class="card">
-        <h3>Limit the intake</h3>
-        <p>Check for information you can act on, then stop. Continuous coverage of something you cannot change raises distress without improving any decision.</p>
-      </div>
-      <div class="card">
-        <h3>Protect sleep first</h3>
-        <p>Nearly everything else gets harder without it, and it is usually the first thing sacrificed.</p>
-      </div>
-      <div class="card">
-        <h3>Stay in contact</h3>
-        <p>Isolation makes everything worse and is easy to drift into when everyone is stretched. A short conversation with someone outside the household is not a luxury.</p>
-      </div>
-      <div class="card">
-        <h3>Get outside and move</h3>
-        <p>Even briefly. Early morning, in this climate.</p>
-      </div>
-    </div>
-
-    <h3>Talking with children</h3>
-    <p>Children judge how serious things are mostly from the adults around them rather than from the facts themselves.</p>
-    <ul>
-      <li>Tell the truth, at the level of detail their age can hold. Vague reassurance that does not match what they can plainly see teaches them not to trust what you say.</li>
-      <li>Say what is being done, and who is doing it. Children settle on knowing that capable adults are handling it far more than on details.</li>
-      <li>Answer the question they asked, then stop. They will ask for more when they are ready for more.</li>
-      <li>Expect the same questions again and again. Repetition is how children process, not a sign they did not hear you.</li>
-      <li>Keep them away from continuous coverage, especially footage of damage.</li>
-    </ul>
-
-    <h3>What a ward is actually for</h3>
-    <p>The practical function of a congregation in a long emergency is help that nobody has to ask for twice: knowing who lives alone, who has medical equipment that needs power, who cannot drive, who has a generator, who has a truck, who has the skills.</p>
-    <p>That knowledge has to exist before it is needed, which is the entire point of the <a href="#share">skills and needs form</a>. The households that do best are generally not the ones with the deepest storage. They are the ones embedded in a network of people who notice when they go quiet.</p>
-
-    <h3>When it is more than ordinary stress</h3>
-    <p>Some things warrant help beyond what family and friends can give: distress that does not ease as circumstances improve, being unable to function in daily responsibilities over a period of weeks, leaning on alcohol or other substances to get through the day, or thoughts of self-harm.</p>
-    <p>Reaching out for that is not a failure of faith, resilience or preparation. It is the same kind of decision as setting a broken bone.</p>
-
-    <div class="card callout" id="crisis-line">
-      <h3 style="margin-top:0">If you or someone you know needs help now</h3>
-      <p>The <strong>988 Suicide &amp; Crisis Lifeline</strong> is available 24 hours a day, every day. Call or text <strong>988</strong>. It is free and confidential, and it is for anyone in distress &mdash; not only people in immediate danger.</p>
-      <p style="margin-bottom:0">The bishop can also connect members with counseling resources through Church channels, including help with the cost where that is a barrier.</p>
-    </div>
-  </section>
-
-  <section id="family">
+<section id="family">
     <h2>Family preparedness</h2>
     <p class="lead">The Church provides detailed guidance on food and water storage, 72-hour kits, finances, and emotional resilience. Start here:</p>
     <div class="grid">
@@ -621,17 +219,20 @@
 
 <footer>
   <div class="wrap">
-    <p>Maintained by the Washington Fields 12th Ward for our members and neighbors. Questions or corrections: <a href="mailto:wf12thprep@gmail.com">wf12thprep@gmail.com</a>. Last updated November 1, 2026.</p>
+    <p>Maintained by the Washington Fields 12th Ward for our members and neighbors. Questions or corrections: <a href="mailto:wf12thprep@gmail.com">wf12thprep@gmail.com</a>. Last updated November 6, 2026.</p>
     <p>This is not an official website of The Church of Jesus Christ of Latter-day Saints.</p>
+    <p>Nothing on this site is medical, financial, legal or insurance advice. Nutrition needs vary between individuals, and the food storage guidance is not written for children, for pregnant or nursing mothers, or for anyone managing a health condition. In an emergency, follow the instructions of local emergency officials.</p>
   </div>
 </footer>
 
 <script>
+  
   // Paste each Google Form's share link here. Until one is set, its button says the form is coming.
   const FORM_URL = "https://forms.gle/gZVnFFsvJEUMPPtM8";    // Skills & needs (see FORM-QUESTIONS.md)
   const SURVEY_URL = "https://forms.gle/j41nPV3mEBQNdYiw7";  // Anonymous preparedness survey (see SURVEY-QUESTIONS.md)
   for (const [id, url] of [["form-link", FORM_URL], ["survey-link", SURVEY_URL]]) {
     const link = document.getElementById(id);
+    if (!link) continue;
     if (url) {
       link.href = url;
     } else {
@@ -640,66 +241,7 @@
       link.style.opacity = ".6";
     }
   }
-  // Food & water calculator. Per adult, per year: common long-term storage planning figures.
-  const BASICS = [
-    ["Grains (wheat, rice, oats, flour, pasta)", 300, "lb"],
-    ["Legumes (dry beans, lentils, split peas)", 60, "lb"],
-    ["Sugar or honey", 60, "lb"],
-    ["Powdered milk", 16, "lb"],
-    ["Cooking oil", 10, "qt"],
-    ["Salt", 8, "lb"],
-  ];
-  const $ = (id) => document.getElementById(id);
-  const num = (id) => Math.max(0, parseInt($(id).value, 10) || 0);
-  const fmt = (n) => n.toLocaleString("en-US", { maximumFractionDigits: n < 10 ? 1 : 0 });
-  const plural = (n, word) => `${fmt(n)} ${word}${n === 1 ? "" : "s"}`;
-
-  function describeDays(d) {
-    if (d === 3) return "72 hours";
-    if (d % 365 === 0) return plural(d / 365, "year");
-    if (d === 90) return "3 months";
-    if (d % 7 === 0 && d < 90) return plural(d / 7, "week");
-    return plural(d, "day");
-  }
-
-  function calc() {
-    const adults = num("c-adults"), kids = num("c-kids"), little = num("c-little");
-    const days = Math.max(1, num("c-days") || 1);
-    const people = adults + kids + little;
-    const eaters = adults + kids * 0.7 + little * 0.5; // adult-equivalents for food
-    const heat = $("c-heat").checked;
-
-    document.querySelectorAll(".chip").forEach((c) =>
-      c.setAttribute("aria-pressed", String(Number(c.dataset.days) === days)));
-
-    // Stored water tops out at two weeks; beyond that, the plan is a way to purify more.
-    const waterDays = Math.min(days, 14);
-    const gallons = people * waterDays * (heat ? 2 : 1);
-    $("r-water").textContent = `${fmt(Math.ceil(gallons))} gallons`;
-    $("r-water-detail").textContent = people === 0 ? "Enter your household above." :
-      `That's about ${plural(Math.ceil(gallons / 5), "5-gallon jug")}` +
-      (gallons >= 55 ? `, or about ${fmt(Math.round(gallons / 55 * 10) / 10)} barrels (55-gallon).` : ".") +
-      (days > 14 ? " This is two weeks of stored water. For longer, add a filter or purification tablets so you can treat more." : "");
-
-    const meals = Math.ceil(people * days * 3);
-    $("r-meals").textContent = `${fmt(meals)} meals`;
-    $("r-meals-detail").textContent = people === 0 ? "" :
-      `About ${fmt(Math.round(eaters * days * 2000 / 1000) * 1000)} calories in all. ` +
-      (days <= 14 ? "For this length, choose ready-to-eat foods that need no cooking or refrigeration."
-                  : "The best start is extra of the everyday foods your family already eats, rotated as you use them.");
-
-    const years = days / 365;
-    $("r-basics-card").hidden = days < 30 || eaters === 0;
-    $("r-basics-intro").textContent =
-      `If you add shelf-stable basics on top of everyday foods, here's roughly what ${describeDays(days)} looks like for your household:`;
-    $("r-basics").innerHTML = BASICS.map(([name, perYear, unit]) =>
-      `<tr><td>${name}</td><td>${fmt(Math.ceil(perYear * eaters * years))} ${unit}</td></tr>`).join("");
-  }
-
-  document.querySelectorAll(".chip").forEach((c) =>
-    c.addEventListener("click", () => { $("c-days").value = c.dataset.days; calc(); }));
-  ["c-adults", "c-kids", "c-little", "c-days", "c-heat"].forEach((id) => $(id).addEventListener("input", calc));
-  calc();
 </script>
+
 </body>
 </html>

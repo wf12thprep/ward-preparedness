@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Food & water — WF 12th Ward Preparedness</title>
+<meta name="description" content="Work out how much food and water your household needs, then what to buy and what expires first.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Food & water — WF 12th Ward Preparedness">
+<meta property="og:description" content="Work out how much food and water your household needs, then what to buy and what expires first.">
+<meta property="og:url" content="https://ward-preparedness.vercel.app/food.html">
+<meta property="og:image" content="https://ward-preparedness.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231f3a5f'/><path d='M16 6 26 14v12H6V14z' fill='%23f2b544'/></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero compact">
+  <div class="wrap">
+    <p class="crumb"><a href="index.html">Washington Fields 12th Ward Preparedness</a></p>
+    <h1>Food &amp; water</h1>
+    <p class="sub">How much you need, what to buy, and what quietly expires first.</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Pages">
+  <div class="wrap">
+    <ul>
+      <li><a href="index.html">Emergency plan</a></li>
+      <li><a href="food.html" aria-current="page">Food &amp; water</a></li>
+      <li><a href="money.html">Money</a></li>
+      <li><a href="resilience.html">Emotional resilience</a></li>
+      <li><a href="simulation.html">Practice exercise</a></li>
+      <li><a href="index.html#share">Skills &amp; needs</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="calculator">
+    <h2>Food &amp; water calculator</h2>
+    <p class="lead">How much should your household store? Enter your family and how long you want to be covered.</p>
+    <div class="card calc">
+      <div class="calc-inputs">
+        <div><label for="c-adults">Adults &amp; teens<small>age 12 and up</small></label><input id="c-adults" type="number" min="0" max="30" value="2" inputmode="numeric"></div>
+        <div><label for="c-kids">Children<small>age 4 to 11</small></label><input id="c-kids" type="number" min="0" max="30" value="0" inputmode="numeric"></div>
+        <div><label for="c-little">Little ones<small>age 0 to 3</small></label><input id="c-little" type="number" min="0" max="30" value="0" inputmode="numeric"></div>
+      </div>
+      <label for="c-days" style="font-size:15px;font-weight:600">How long?</label>
+      <div class="chips" role="group" aria-label="Preset lengths">
+        <button type="button" class="chip" data-days="3">72 hours</button>
+        <button type="button" class="chip" data-days="14">2 weeks</button>
+        <button type="button" class="chip" data-days="90">3 months</button>
+        <button type="button" class="chip" data-days="365">1 year</button>
+      </div>
+      <div class="calc-days"><input id="c-days" type="number" min="1" max="730" value="14" inputmode="numeric"> <span>days</span></div>
+      <label class="check"><input id="c-heat" type="checkbox"> Plan for summer heat (double the drinking water)</label>
+    </div>
+
+    <div class="results">
+      <div class="card">
+        <h3>Water</h3>
+        <div class="big" id="r-water"></div>
+        <p id="r-water-detail" class="note"></p>
+      </div>
+      <div class="card">
+        <h3>Food</h3>
+        <div class="big" id="r-meals"></div>
+        <p id="r-meals-detail" class="note"></p>
+      </div>
+    </div>
+
+    <div class="card" id="r-basics-card">
+      <h3>Longer-term basics</h3>
+      <p class="note" id="r-basics-intro"></p>
+      <table>
+        <tbody id="r-basics"></tbody>
+      </table>
+    </div>
+    <p class="note">These are common planning estimates, not official requirements. Children are counted as 70% of an adult and little ones as 50%. Water is 1 gallon per person per day for drinking and basic hygiene, stored for up to two weeks; pets need their own. Start where you can: a little at a time is how every family's supply gets built.</p>
+  </section>
+
+<section id="storage">
+    <h2>Building a longer-term food supply</h2>
+    <p class="lead">The calculator tells you how much. This is what to buy, what quietly expires, and the equipment people forget until the day they need it.</p>
+
+    <h3>Work in calories per bucket</h3>
+    <p>Calorie figures get published per ounce, per cup, per 100 grams and per pound depending on where you look. Mixing those units is the most common mistake in a storage spreadsheet, and families usually end up believing they have far more or far less than they do. Checking against a per-container figure catches it fast.</p>
+    <div class="card">
+      <table>
+        <thead>
+          <tr><th>Staple</th><th>Weight in a 5-gallon bucket</th><th>Calories</th><th>Worth knowing</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Hard red wheat</td><td>37 lb</td><td>55,500</td><td>Useless without a mill</td></tr>
+          <tr><td>White rice</td><td>36 lb</td><td>59,600</td><td>White only &mdash; brown goes rancid in a year</td></tr>
+          <tr><td>Pinto or black beans</td><td>35 lb</td><td>54,600</td><td>See the ten-year note below</td></tr>
+          <tr><td>Lentils</td><td>35 lb</td><td>54,250</td><td>No soaking, fastest to cook</td></tr>
+          <tr><td>Rolled oats</td><td>20 lb</td><td>34,000</td><td>Bulky for the calories</td></tr>
+          <tr><td>Masa harina</td><td>30 lb</td><td>49,000</td><td>Shortest-lived grain</td></tr>
+          <tr><td>Sugar</td><td>35 lb</td><td>61,000</td><td>Keeps indefinitely</td></tr>
+          <tr><td>Honey</td><td>60 lb</td><td>82,700</td><td>Keeps indefinitely</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">A year at 2,000 calories a day is about 730,000 calories per person. Plan closer to 2,500 if you expect to be doing physical work without power, and it rises to roughly 912,500 &mdash; a difference of about three months of food. Decide which you are planning against before you start buying.</p>
+
+    <h3>A plan is only as long as its shortest item</h3>
+    <p>Thirty-year wheat stored beside one-year nuts is not a one-year supply. Part of it expires quietly while nobody is looking.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>25 to 30 years</h3>
+        <p>Wheat berries, white rice, dry beans, lentils, sugar, salt. Honey keeps indefinitely. Sealed in food-grade buckets with oxygen absorbers.</p>
+      </div>
+      <div class="card">
+        <h3>10 to 20 years</h3>
+        <p>Rolled oats, powdered milk, powdered egg, freeze-dried fruit and vegetables. Better in #10 cans than buckets.</p>
+      </div>
+      <div class="card">
+        <h3>1 to 2 years</h3>
+        <p>Nuts, nut butters, masa harina, whole-grain flour, brown rice, cooking oils. The oils in these go rancid. Freezer storage roughly doubles the window.</p>
+      </div>
+      <div class="card">
+        <h3>Under a year</h3>
+        <p>Protein powders, baking powder, fresh-milled flour, most supplements. Rotation items, not storage items.</p>
+      </div>
+    </div>
+
+    <div class="card callout">
+      <h3 style="margin-top:0">The ten-year bean problem</h3>
+      <p>Dry beans stored past roughly a decade develop what is called hard-to-cook syndrome. They never soften no matter how long you boil them, and how well they were sealed makes no difference. Lentils and split peas do not do this. If beans are a large share of your plan, either rotate them or move some of that weight to lentils.</p>
+    </div>
+
+    <h3>The things nobody budgets for</h3>
+    <p>Food in a bucket is not food on a plate. Each of these turns stored staples into something you can actually eat.</p>
+    <ul>
+      <li><strong>A hand grain mill.</strong> Wheat berries without one are birdseed. Buy manual or manual-capable &mdash; an electric-only mill is a bet on the grid staying up.</li>
+      <li><strong>Cooking fuel.</strong> Dry beans need one to two hours of boiling every time. Over months that is hundreds of hours of burner time. A pressure cooker cuts bean cooking by about two-thirds and is the cheapest fuel savings available.</li>
+      <li><strong>Animal feed.</strong> Ten laying hens eat roughly 900 pounds of feed a year &mdash; more tonnage than most families' entire food storage, and it buys eggs rather than calories. Keep chickens for the protein and the morale, but do not count them as a calorie source.</li>
+      <li><strong>Garden inputs.</strong> Seed that stays viable, and nutrient solution for any hydroponic setup. Without the consumables, a grow tower is a planter.</li>
+      <li><strong>Salt, leavening and seasoning.</strong> Bread needs salt. And appetite fatigue is real &mdash; people stop eating monotonous food, so a plan nobody will eat is not a plan.</li>
+    </ul>
+
+    <h3>Water is the harder problem</h3>
+    <p>Two weeks for a family of four is 56 gallons, which is easy and covers the most likely emergency by a wide margin. A year for one person is 365 gallons &mdash; about seven 55-gallon drums for a single adult. Past roughly a month, storage stops being the answer and filtration plus a renewable source becomes the answer. Budget for a gravity filter and spare elements alongside the containers.</p>
+    <p>In this climate, add one more thing: keep stored water out of the heat. A garage that hits 130&deg;F in July degrades plastic containers faster than most people expect.</p>
+
+    <div class="card callout">
+      <h3 style="margin-top:0">One household's worked example</h3>
+      <p>A member of the ward built a full one-year plan for one adult using the method above &mdash; corrected calorie math, shelf-life tiers, home production counted honestly, and a weekly meal plan that reconciles against the stored quantities. Ask at church if you would like to see it.</p>
+      <p class="note" style="margin-bottom:0">It is an example of the arithmetic, not a plan to copy. It is built around one person's body weight, activity level, allergies and tastes, and its nutrient targets and supplement list would be wrong &mdash; in some cases meaningfully wrong &mdash; for a child, for a pregnant or nursing mother, or for anyone managing a health condition. Borrow the structure and build your own numbers.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Maintained by the Washington Fields 12th Ward for our members and neighbors. Questions or corrections: <a href="mailto:wf12thprep@gmail.com">wf12thprep@gmail.com</a>. Last updated November 6, 2026.</p>
+    <p>This is not an official website of The Church of Jesus Christ of Latter-day Saints.</p>
+    <p>Nothing on this site is medical, financial, legal or insurance advice. Nutrition needs vary between individuals, and the food storage guidance is not written for children, for pregnant or nursing mothers, or for anyone managing a health condition. In an emergency, follow the instructions of local emergency officials.</p>
+  </div>
+</footer>
+
+<script>
+  // Food & water calculator. Per adult, per year: common long-term storage planning figures.
+  const BASICS = [
+    ["Grains (wheat, rice, oats, flour, pasta)", 300, "lb"],
+    ["Legumes (dry beans, lentils, split peas)", 60, "lb"],
+    ["Sugar or honey", 60, "lb"],
+    ["Powdered milk", 16, "lb"],
+    ["Cooking oil", 10, "qt"],
+    ["Salt", 8, "lb"],
+  ];
+  const $ = (id) => document.getElementById(id);
+  const num = (id) => Math.max(0, parseInt($(id).value, 10) || 0);
+  const fmt = (n) => n.toLocaleString("en-US", { maximumFractionDigits: n < 10 ? 1 : 0 });
+  const plural = (n, word) => `${fmt(n)} ${word}${n === 1 ? "" : "s"}`;
+
+  function describeDays(d) {
+    if (d === 3) return "72 hours";
+    if (d % 365 === 0) return plural(d / 365, "year");
+    if (d === 90) return "3 months";
+    if (d % 7 === 0 && d < 90) return plural(d / 7, "week");
+    return plural(d, "day");
+  }
+
+  function calc() {
+    const adults = num("c-adults"), kids = num("c-kids"), little = num("c-little");
+    const days = Math.max(1, num("c-days") || 1);
+    const people = adults + kids + little;
+    const eaters = adults + kids * 0.7 + little * 0.5; // adult-equivalents for food
+    const heat = $("c-heat").checked;
+
+    document.querySelectorAll(".chip").forEach((c) =>
+      c.setAttribute("aria-pressed", String(Number(c.dataset.days) === days)));
+
+    // Stored water tops out at two weeks; beyond that, the plan is a way to purify more.
+    const waterDays = Math.min(days, 14);
+    const gallons = people * waterDays * (heat ? 2 : 1);
+    $("r-water").textContent = `${fmt(Math.ceil(gallons))} gallons`;
+    $("r-water-detail").textContent = people === 0 ? "Enter your household above." :
+      `That's about ${plural(Math.ceil(gallons / 5), "5-gallon jug")}` +
+      (gallons >= 55 ? `, or about ${fmt(Math.round(gallons / 55 * 10) / 10)} barrels (55-gallon).` : ".") +
+      (days > 14 ? " This is two weeks of stored water. For longer, add a filter or purification tablets so you can treat more." : "");
+
+    const meals = Math.ceil(people * days * 3);
+    $("r-meals").textContent = `${fmt(meals)} meals`;
+    $("r-meals-detail").textContent = people === 0 ? "" :
+      `About ${fmt(Math.round(eaters * days * 2000 / 1000) * 1000)} calories in all. ` +
+      (days <= 14 ? "For this length, choose ready-to-eat foods that need no cooking or refrigeration."
+                  : "The best start is extra of the everyday foods your family already eats, rotated as you use them.");
+
+    const years = days / 365;
+    $("r-basics-card").hidden = days < 30 || eaters === 0;
+    $("r-basics-intro").textContent =
+      `If you add shelf-stable basics on top of everyday foods, here's roughly what ${describeDays(days)} looks like for your household:`;
+    $("r-basics").innerHTML = BASICS.map(([name, perYear, unit]) =>
+      `<tr><td>${name}</td><td>${fmt(Math.ceil(perYear * eaters * years))} ${unit}</td></tr>`).join("");
+  }
+
+  document.querySelectorAll(".chip").forEach((c) =>
+    c.addEventListener("click", () => { $("c-days").value = c.dataset.days; calc(); }));
+  ["c-adults", "c-kids", "c-little", "c-days", "c-heat"].forEach((id) => $(id).addEventListener("input", calc));
+  calc();
+</script>
+
+</body>
+</html>
