@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preparedness Exercise | Washington Fields 12th Ward</title>
+<meta name="description" content="A fictional, choose-your-response exercise for families. This is practice, not a real event.">
+<meta name="robots" content="noindex">
+
+<!-- Link preview says "exercise" up front so a shared link can't be mistaken for a real alert. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ward-preparedness.vercel.app/simulation.html">
+<meta property="og:title" content="Preparedness Exercise (Fictional Scenario)">
+<meta property="og:description" content="A choose-your-response practice exercise for families. This is fiction, not a real event.">
+<meta property="og:image" content="https://ward-preparedness.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231f3a5f'/><path d='M16 6 26 14v12H6V14z' fill='%23f2b544'/></svg>">
+<style>
+  :root {
+    --bg: #faf8f4; --surface: #ffffff; --text: #1d2430; --muted: #5a6474; --line: #e4dfd5;
+    --brand: #1f3a5f; --brand-ink: #ffffff; --accent: #b86e00; --accent-soft: #fdf1dc;
+    --good: #237a3b; --good-soft: #e5f3e9; --warn: #a8481c; --warn-soft: #fbeee7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12161d; --surface: #1a2029; --text: #e9ecf1; --muted: #a3adbb; --line: #2c3440;
+      --brand: #8fb3e0; --brand-ink: #0d1520; --accent: #f2b544; --accent-soft: #2a2416;
+      --good: #6fcf8e; --good-soft: #17281d; --warn: #f0a07a; --warn-soft: #2e1e16;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12161d; --surface: #1a2029; --text: #e9ecf1; --muted: #a3adbb; --line: #2c3440;
+    --brand: #8fb3e0; --brand-ink: #0d1520; --accent: #f2b544; --accent-soft: #2a2416;
+    --good: #6fcf8e; --good-soft: #17281d; --warn: #f0a07a; --warn-soft: #2e1e16;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 18px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--brand); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+
+  /* Always on screen, so a screenshot or a late arrival can't mistake this for a real alert. */
+  .exercise-banner { position: sticky; top: 0; z-index: 5; background: var(--accent-soft); border-bottom: 1px solid var(--line); font-size: 15px; font-weight: 700; text-align: center; padding: 8px 16px; }
+
+  header.top { padding: 24px 0 0; font-size: 16px; }
+  main { padding: 16px 0 48px; }
+  h1 { font-size: clamp(28px, 6vw, 38px); line-height: 1.2; margin: 8px 0 12px; }
+  h2 { font-size: 25px; line-height: 1.3; margin: 0 0 12px; }
+  h1:focus, h2:focus { outline: none; }
+  h3 { font-size: 20px; margin: 24px 0 8px; }
+  .muted { color: var(--muted); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin: 16px 0; }
+  .callout { background: var(--accent-soft); border-color: transparent; }
+
+  .btn { display: inline-block; font: inherit; font-weight: 600; padding: 12px 20px; border-radius: 10px; border: 2px solid transparent; background: var(--brand); color: var(--brand-ink); cursor: pointer; text-decoration: none; }
+  .btn-ghost { background: transparent; color: var(--brand); border-color: currentColor; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+
+  .progress { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; color: var(--muted); margin-bottom: 6px; }
+  .when { font-weight: 700; color: var(--accent); }
+  .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-bottom: 20px; }
+  .bar span { display: block; height: 100%; background: var(--brand); }
+
+  .choices { display: grid; gap: 10px; margin-top: 16px; }
+  .choice { display: block; width: 100%; text-align: left; font: inherit; color: var(--text); background: var(--surface); border: 2px solid var(--line); border-radius: 12px; padding: 14px 16px; cursor: pointer; }
+  .choice:hover:not(:disabled) { border-color: var(--brand); }
+  .choice:disabled { cursor: default; }
+  .choice.best { border-color: var(--good); background: var(--good-soft); }
+  .choice.missed { border-color: var(--warn); background: var(--warn-soft); }
+  .tag { display: block; font-size: 14px; font-weight: 700; margin-top: 4px; }
+  .best .tag { color: var(--good); }
+  .missed .tag { color: var(--warn); }
+
+  .why { margin-top: 16px; }
+  .why p { margin: 0 0 8px; }
+  .why p:last-child { margin-bottom: 0; }
+  .plan-note { font-size: 16px; color: var(--muted); }
+
+  .score { font-size: 48px; font-weight: 800; color: var(--brand); line-height: 1.1; }
+  ul.tidy { padding-left: 22px; margin: 8px 0; }
+  ul.tidy li { margin-bottom: 8px; }
+  footer { border-top: 1px solid var(--line); padding: 20px 0 36px; color: var(--muted); font-size: 15px; }
+</style>
+</head>
+<body>
+
+<div class="exercise-banner" role="note">PRACTICE EXERCISE: This is fiction. There is no real emergency.</div>
+
+<div class="wrap">
+  <header class="top"><a href="/">&larr; Back to our ward plan</a></header>
+  <main id="app"></main>
+  <footer>
+    <p>Maintained by the Washington Fields 12th Ward. In a real emergency, follow official instructions, and call 911 for life-threatening emergencies. Guidance adapted from FEMA/Ready.gov and the CDC.</p>
+    <p>This is not an official website of The Church of Jesus Christ of Latter-day Saints.</p>
+  </footer>
+</div>
+
+<script>
+  const SKILLS_FORM = "https://forms.gle/gZVnFFsvJEUMPPtM8";
+  const SURVEY_FORM = "https://forms.gle/j41nPV3mEBQNdYiw7";
+
+  // Each scene: exactly one choice has best: true. `plan` ties the answer back to the ward plan.
+  const SCENES = [
+    {
+      when: "0 minutes",
+      story: "It's a weekday afternoon and you're at home with your family. A violent earthquake hits and the house starts to shake hard. Dishes crash to the floor.",
+      question: "What do you do right now?",
+      choices: [
+        { text: "Run outside as fast as you can." },
+        { text: "Stand in a doorway and brace yourself." },
+        { text: "Drop, get under a sturdy table, and hold on.", best: true },
+      ],
+      why: "Most earthquake injuries come from falling objects and from trying to move during the shaking. A doorway gives no special protection in a modern home.",
+    },
+    {
+      when: "10 minutes",
+      story: "The shaking has stopped. Everyone in your home is unhurt, with some cracked drywall. You don't smell gas or hear any hissing. The power is out.",
+      question: "What's next?",
+      choices: [
+        { text: "Shut off the gas, just to be safe." },
+        { text: "Put the OK sign in your front window and check on your neighbors.", best: true },
+        { text: "Drive to the store for supplies before the lines get long." },
+      ],
+      why: "Shut off gas only if you smell it or hear hissing. Once it's off, a qualified technician has to restore it, which can take a long time after a major disaster. Stay off the roads so responders can get through.",
+      plan: "Our plan: steps 3 to 5 of the first hour.",
+    },
+    {
+      when: "1 hour",
+      story: "On your crank radio, you hear a stunning report: hackers have struck key national systems while the country is distracted by the earthquake. Nuclear weapons have detonated at missile sites in other states. The grid is down across the region. Officials warn that fallout may reach some areas and tell everyone to shelter indoors.",
+      question: "Your family usually gathers at the meetinghouse on Log Lane. What do you do?",
+      choices: [
+        { text: "Walk to the meetinghouse, because that's the plan." },
+        { text: "Load the car and try to outrun it to relatives in another state." },
+        { text: "Get inside, stay inside, and keep listening to the radio.", best: true },
+      ],
+      why: "An official shelter order comes before the gathering plan. Time outdoors or stuck on a road is the exposure you're trying to avoid. Plan on at least 24 hours, and leave earlier only for an immediate danger like a fire, a gas leak, or a collapsing building, or when officials say it's safe.",
+      plan: "Our plan changes here: no one should be expected at the meetinghouse until officials say it's safe to go outside.",
+    },
+    {
+      when: "1 hour, 15 minutes",
+      story: "You have a few minutes to choose where to wait out the next day. An aftershock rattles the house, but it's still standing.",
+      question: "Where do you shelter, and how do you set up?",
+      choices: [
+        { text: "In the basement or the most central room, with windows closed and any fans or A/C off.", best: true },
+        { text: "Upstairs by a window, so you can watch what's coming." },
+        { text: "In the garage, next to the car, in case you need to leave quickly." },
+      ],
+      why: "Put as many walls and as much distance as you can between you and the outside. Basements and the center of a building protect best. If your home is badly damaged, go to the nearest sturdy building instead. Bring pets inside too.",
+    },
+    {
+      when: "3 hours",
+      story: "A neighbor pounds on your door. They were outside for a long time checking on a relative, and their jacket and hair are dusty. They're scared.",
+      question: "What do you do?",
+      choices: [
+        { text: "Sit them down on the couch with a blanket and calm them first." },
+        { text: "Don't open the door. They could contaminate your family." },
+        { text: "Bring them in, have them take off their outer clothes right at the door and bag them, then wash.", best: true },
+      ],
+      why: "Removing the outer layer can remove up to 90% of radioactive material. Undress gently so dust doesn't shake loose, seal the clothes in a bag away from people, and wash with soap and water. Use shampoo but no conditioner. No running water? Wipe skin and hair with a clean wet cloth.",
+      plan: "Put trash bags and a change of clothes in your 72-hour kit.",
+    },
+    {
+      when: "12 hours",
+      story: "Your phone briefly finds a signal. A text from an unknown number says: \"OFFICIAL: all clear. Everyone report to the meetinghouse for supplies now.\" Key systems have been compromised, and you don't know who sent it.",
+      question: "How do you respond?",
+      choices: [
+        { text: "Go now. Supplies may run out." },
+        { text: "Stay put and check it against the radio before you believe it or pass it on.", best: true },
+        { text: "Forward it to everyone you know, just in case." },
+      ],
+      why: "In a crisis, false messages spread quickly, especially if systems have been hacked. Check against KDXU 890 AM, NOAA Weather Radio at 162.475 MHz, or a ward leader you know personally. A battery or crank radio doesn't depend on the internet or cell towers.",
+      plan: "Our plan: step 7, listen for official updates.",
+    },
+    {
+      when: "20 hours",
+      story: "Someone on your street says everyone needs to take iodine right away, and suggests iodized table salt or a bottle of antiseptic.",
+      question: "What's the right call?",
+      choices: [
+        { text: "Eat a few spoonfuls of iodized salt, since it's what you have." },
+        { text: "Take potassium iodide only if officials tell you to, and never use salt or antiseptic.", best: true },
+        { text: "Dab antiseptic iodine on your skin to be safe." },
+      ],
+      why: "Potassium iodide protects only the thyroid, and only when public health officials direct its use. Table salt doesn't contain nearly enough iodine, and household iodine products can make you sick.",
+    },
+    {
+      when: "Day 2",
+      story: "Officials say your area may go outside for short trips. The taps are dry, and the refrigerator has been warm since yesterday.",
+      question: "What does your family eat and drink?",
+      choices: [
+        { text: "Vegetables from the garden and water from an open rain barrel." },
+        { text: "Whatever is left in the refrigerator, so it doesn't go to waste." },
+        { text: "Stored water and pantry food, plus anything still frozen. Throw out the warm refrigerator food.", best: true },
+      ],
+      why: "Food and water that stayed indoors or in sealed containers are safe. Wipe outdoor containers with a damp cloth before opening them. Avoid garden produce and uncovered outdoor water until officials say they're safe. Refrigerated food generally isn't safe after about 4 hours without power.",
+      plan: "This is why we store two weeks of water and three months of everyday food. Try the calculator to see your family's numbers.",
+    },
+    {
+      when: "Day 3",
+      story: "You check in at the meetinghouse parking lot. Leaders ask you to look in on a man on your street who uses an oxygen concentrator. His battery is nearly dead. You own a generator.",
+      question: "How do you help?",
+      choices: [
+        { text: "Run the generator outdoors, at least 20 feet from doors and windows, and run an extension cord to him.", best: true },
+        { text: "Run it in his garage with the door open, to keep it safe from theft." },
+        { text: "Keep it at your house. You may need the fuel later." },
+      ],
+      why: "Generator exhaust can kill within minutes, and an open garage door doesn't make it safe. Keep it outdoors, away from all openings, and tell leaders about his oxygen supply so they can find a longer-term answer.",
+      plan: "Leaders knew about him because he shared his needs on the Skills & Needs form, and they knew about your generator because you did too.",
+    },
+    {
+      when: "Day 7",
+      story: "Power is still out, and cards and ATMs don't work. Your food storage is holding up, but a family on your street has almost nothing. Others are starting to notice who has food.",
+      question: "What do you do?",
+      choices: [
+        { text: "Hide everything and tell no one. Your family comes first." },
+        { text: "Share through ward leaders, pool food and skills, and keep enough for your family.", best: true },
+        { text: "Hand out everything you have to whoever asks." },
+      ],
+      why: "A coordinated response makes supplies last longer, gets help to those who need it most, and keeps neighbors working together. It's also the reason we prepare in the first place: to care for our families and be able to help others.",
+      plan: "A little cash in small bills in your kit helps when cards don't work.",
+    },
+  ];
+
+  const app = document.getElementById("app");
+  let index = 0;
+  let score = 0;
+
+  function el(tag, props = {}, ...children) {
+    const node = Object.assign(document.createElement(tag), props);
+    node.append(...children);
+    return node;
+  }
+
+  function show(...nodes) {
+    app.replaceChildren(...nodes);
+    window.scrollTo(0, 0);
+    const heading = app.querySelector("h1, h2");
+    if (heading) { heading.tabIndex = -1; heading.focus({ preventScroll: true }); }
+  }
+
+  function start() {
+    index = 0;
+    score = 0;
+    const begin = el("button", { className: "btn", type: "button", textContent: "Begin the exercise" });
+    begin.addEventListener("click", renderScene);
+    show(
+      el("h1", { textContent: "What would you do?" }),
+      el("p", { textContent: "This is a practice exercise for families: 10 decisions across one very bad week. It's deliberately extreme, because hard scenarios show us where our plans have gaps." }),
+      el("div", { className: "card callout" },
+        el("strong", { textContent: "The scenario: " }),
+        "A major earthquake strikes southern Utah. Hackers use the moment of national distraction to compromise key systems, and nuclear weapons detonate at missile sites in other states. The power grid goes down and critical infrastructure can't be trusted. What do you do?"),
+      el("p", { className: "muted", textContent: "This story is made up. It isn't a prediction, and it isn't based on any known threat. Parents, you may want to go through it first and then decide whether to do it with younger children. Nothing you choose is saved or sent anywhere." }),
+      el("div", { className: "actions" }, begin),
+    );
+  }
+
+  function renderScene() {
+    const scene = SCENES[index];
+    const nextLabel = index === SCENES.length - 1 ? "See how you did" : "Next";
+    const buttons = scene.choices.map((choice) => {
+      const button = el("button", { className: "choice", type: "button", textContent: choice.text });
+      button.addEventListener("click", () => answer(scene, choice, buttons, feedback, nextLabel));
+      return button;
+    });
+    const feedback = el("div", { "ariaLive": "polite" });
+    const percent = Math.round((index / SCENES.length) * 100);
+    const fill = el("span");
+    fill.style.width = percent + "%";
+    show(
+      el("div", { className: "progress" },
+        el("span", { className: "when", textContent: scene.when }),
+        el("span", { textContent: `Decision ${index + 1} of ${SCENES.length}` })),
+      el("div", { className: "bar" }, fill),
+      el("p", { textContent: scene.story }),
+      el("h2", { textContent: scene.question }),
+      el("div", { className: "choices" }, ...buttons),
+      feedback,
+    );
+  }
+
+  function answer(scene, choice, buttons, feedback, nextLabel) {
+    if (choice.best) score += 1;
+    scene.choices.forEach((option, i) => {
+      buttons[i].disabled = true;
+      if (option.best) {
+        buttons[i].classList.add("best");
+        buttons[i].append(el("span", { className: "tag", textContent: "Best choice" }));
+      } else if (option === choice) {
+        buttons[i].classList.add("missed");
+        buttons[i].append(el("span", { className: "tag", textContent: "Your choice" }));
+      }
+    });
+    const next = el("button", { className: "btn", type: "button", textContent: nextLabel });
+    next.addEventListener("click", () => {
+      index += 1;
+      if (index < SCENES.length) renderScene(); else renderEnd();
+    });
+    const why = el("div", { className: "card why" },
+      el("p", {},
+        el("strong", { textContent: choice.best ? "Good call. " : "Here's a safer choice. " }),
+        scene.why));
+    if (scene.plan) why.append(el("p", { className: "plan-note", textContent: scene.plan }));
+    feedback.replaceChildren(why, el("div", { className: "actions" }, next));
+    next.focus({ preventScroll: true });
+  }
+
+  function link(href, text) {
+    return el("a", { href, textContent: text, ...(href.startsWith("http") ? { target: "_blank", rel: "noopener" } : {}) });
+  }
+  function item(...children) { return el("li", {}, ...children); }
+
+  function renderEnd() {
+    const again = el("button", { className: "btn btn-ghost", type: "button", textContent: "Try it again" });
+    again.addEventListener("click", start);
+    show(
+      el("h1", { textContent: "You made it through the week" }),
+      el("div", { className: "card" },
+        el("div", { className: "score", textContent: `${score} of ${SCENES.length}` }),
+        el("p", { textContent: "best choices. This isn't a test. Every decision you talked through today is one you won't have to work out in the dark." })),
+      el("div", { className: "card callout" },
+        el("strong", { textContent: "This story was fiction. " }),
+        "The steps you practiced apply to the emergencies we're far more likely to face here: earthquakes, summer outages, floods, and fires. “If ye are prepared ye shall not fear.” (D&C 38:30)"),
+      el("h2", { textContent: "Could your household really do this?" }),
+      el("ul", { className: "tidy" },
+        item("A battery or crank radio, and you know the stations"),
+        item("Two weeks of water and a way to treat more: ", link("/#calculator", "work out your family's amounts")),
+        item("A 72-hour kit with trash bags, a change of clothes, medications, and some cash"),
+        item("A place to shelter at home, chosen ahead of time, and your OK and HELP signs ready"),
+        item("Your skills and needs shared with ward leaders: ", link(SKILLS_FORM, "fill out the form")),
+      ),
+      el("h3", { textContent: "Talk about it as a family" }),
+      el("ul", { className: "tidy" },
+        item("Which decision surprised you most?"),
+        item("Where would we shelter if you were at school or work when it happened?"),
+        item("Which neighbor would need us first?"),
+      ),
+      el("div", { className: "actions" },
+        el("a", { className: "btn", href: SURVEY_FORM, target: "_blank", rel: "noopener", textContent: "Take the preparedness survey" }),
+        again),
+      el("p", { className: "muted", style: "margin-top:20px" },
+        "Official guidance: ", link("https://www.ready.gov/nuclear-explosion", "Ready.gov: Radiation and nuclear emergencies"),
+        ", and ", link("https://www.churchofjesuschrist.org/life/preparedness?lang=eng", "Church preparedness resources"), "."),
+    );
+  }
+
+  start();
+</script>
+</body>
+</html>
