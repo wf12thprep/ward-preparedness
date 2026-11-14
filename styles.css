@@ -164,3 +164,17 @@ nav.toc a[aria-current="page"] { background: var(--brand); color: #fff; border-c
 .hub .card h3 { margin-top: 0; }
 .hub .card a { font-weight: 600; text-decoration: none; }
 .hub .card a:hover { text-decoration: underline; }
+
+  /* ---- quoted counsel (food & water page) ---- */
+  blockquote.counsel {
+    margin: 0 0 18px; padding: 4px 0 4px 18px;
+    border-left: 3px solid var(--accent);
+    font-style: italic;
+  }
+  blockquote.counsel p { margin: 0 0 10px; }
+  blockquote.counsel p:last-of-type { margin-bottom: 0; }
+  blockquote.counsel cite {
+    display: block; font-style: normal; font-size: 15px;
+    color: var(--muted); margin-top: 8px;
+  }
+  .chip-note { font-size: 14px; color: var(--muted); margin: 8px 0 0; }

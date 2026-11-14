@@ -42,6 +42,53 @@
 
 <main class="wrap">
 
+<section id="counsel">
+    <h2>What we are asked to store</h2>
+    <p class="lead">Two different numbers circulate among members, and both are real counsel. Knowing which one is current saves a good deal of confusion &mdash; and a good deal of discouragement.</p>
+
+    <h3>The counsel today</h3>
+    <p>The Church's published guidance is <em>All Is Safely Gathered In: Family Home Storage</em>, and it asks for four things rather than a single number:</p>
+    <div class="card">
+      <ol class="steps">
+        <li><strong>A three-month supply</strong> of the food you normally eat.</li>
+        <li><strong>Drinking water</strong>, for times when the supply may be polluted or cut off.</li>
+        <li><strong>A financial reserve</strong>, built a little at a time.</li>
+        <li><strong>A longer-term supply</strong> of basics such as wheat, rice, beans and oats &mdash; where permitted, and as circumstances allow.</li>
+      </ol>
+    </div>
+    <blockquote class="counsel">
+      <p>Build a small supply of food that is part of your normal, daily diet until it is sufficient for three months.</p>
+      <p>For longer-term needs, and where permitted, gradually build a supply with food that will last a long time.</p>
+      <cite>All Is Safely Gathered In: Family Home Storage (2007)</cite>
+    </blockquote>
+    <p>Notice what is not there: the longer-term supply has no stated quantity. The same pamphlet asks members not to go to extremes or into debt to build storage quickly.</p>
+
+    <h3>Where the year&rsquo;s supply comes from</h3>
+    <p>The one-year figure is real and it is old. President J. Reuben Clark Jr., then a counselor in the First Presidency, said in April 1937 general conference:</p>
+    <blockquote class="counsel">
+      <p>Let every head of every household see to it that he has on hand enough food and clothing, and, where possible, fuel also, for at least a year ahead.</p>
+      <cite>J. Reuben Clark Jr., Conference Report, April 1937</cite>
+    </blockquote>
+    <p>It was repeated for decades. The version most members remember is President Ezra Taft Benson in October 1980, and it carries the qualifier people often recall:</p>
+    <blockquote class="counsel">
+      <p>&hellip; store a provision of food which will last for at least a year wherever it is legally permissible to do so.</p>
+      <cite>Ezra Taft Benson, &ldquo;Prepare for the Days of Tribulation,&rdquo; Ensign, November 1980</cite>
+    </blockquote>
+
+    <h3>So which one applies?</h3>
+    <p>Three things are true at once, and they are easy to run together:</p>
+    <ul>
+      <li>The <strong>legal qualifier survived</strong>. Current materials still say &ldquo;where permitted,&rdquo; and the pamphlet's First Presidency message notes that some members &ldquo;may be prohibited by law from storing large amounts of food.&rdquo;</li>
+      <li>The <strong>one-year number did not carry into current materials</strong>. It is not in the pamphlet, the Gospel Topics page, or the official FAQ.</li>
+      <li>The <strong>earlier counsel was never repudiated</strong>. The 2007 change was presented as making storage achievable for members everywhere, not as a correction.</li>
+    </ul>
+    <div class="card callout">
+      <h3 style="margin-top:0">The practical summary</h3>
+      <p>Three months is what we are asked for today. A year is historical counsel that many members still work toward, and there is nothing wrong with doing so where you have the space, the means and the legal latitude.</p>
+      <p style="margin-bottom:0">If you are starting from nothing, start with three months of what you already eat. That is the counsel, and it is also the part that will actually get done.</p>
+    </div>
+  </section>
+
 <section id="calculator">
     <h2>Food &amp; water calculator</h2>
     <p class="lead">How much should your household store? Enter your family and how long you want to be covered.</p>
@@ -58,7 +105,8 @@
         <button type="button" class="chip" data-days="90">3 months</button>
         <button type="button" class="chip" data-days="365">1 year</button>
       </div>
-      <div class="calc-days"><input id="c-days" type="number" min="1" max="730" value="14" inputmode="numeric"> <span>days</span></div>
+      <p class="chip-note"><strong>3 months</strong> is the counsel today. <strong>1 year</strong> is the historical counsel, where circumstances and law allow. Or type any number of days.</p>
+      <div class="calc-days"><input id="c-days" type="number" min="1" max="730" value="90" inputmode="numeric"> <span>days</span></div>
       <label class="check"><input id="c-heat" type="checkbox"> Plan for summer heat (double the drinking water)</label>
     </div>
 
@@ -82,7 +130,7 @@
         <tbody id="r-basics"></tbody>
       </table>
     </div>
-    <p class="note">These are common planning estimates, not official requirements. Children are counted as 70% of an adult and little ones as 50%. Water is 1 gallon per person per day for drinking and basic hygiene, stored for up to two weeks; pets need their own. Start where you can: a little at a time is how every family's supply gets built.</p>
+    <p class="note">These are common planning estimates, not official requirements. Children are counted as 70% of an adult and little ones as 50%. Water is 1 gallon per person per day for drinking and basic hygiene, pets need their own. Start where you can: a little at a time is how every family's supply gets built.</p>
   </section>
 
 <section id="storage">
@@ -200,14 +248,23 @@
     document.querySelectorAll(".chip").forEach((c) =>
       c.setAttribute("aria-pressed", String(Number(c.dataset.days) === days)));
 
-    // Stored water tops out at two weeks; beyond that, the plan is a way to purify more.
-    const waterDays = Math.min(days, 14);
-    const gallons = people * waterDays * (heat ? 2 : 1);
-    $("r-water").textContent = `${fmt(Math.ceil(gallons))} gallons`;
-    $("r-water-detail").textContent = people === 0 ? "Enter your household above." :
-      `That's about ${plural(Math.ceil(gallons / 5), "5-gallon jug")}` +
-      (gallons >= 55 ? `, or about ${fmt(Math.round(gallons / 55 * 10) / 10)} barrels (55-gallon).` : ".") +
-      (days > 14 ? " This is two weeks of stored water. For longer, add a filter or purification tablets so you can treat more." : "");
+    // Show the real requirement for the period chosen. Past about two weeks, storing all of
+    // it stops being practical, so say what to store and what has to come from treating more.
+    const rate = heat ? 2 : 1;                       // gallons per person per day
+    const needed = people * days * rate;
+    const storable = people * Math.min(days, 14) * rate;
+    const containers = (g) =>
+      `${plural(Math.ceil(g / 5), "5-gallon jug")}` +
+      (g >= 55 ? `, or about ${plural(Math.round(g / 55 * 10) / 10, "55-gallon barrel")}` : "");
+
+    $("r-water").textContent = `${fmt(Math.ceil(needed))} gallons`;
+    $("r-water-detail").textContent =
+      people === 0 ? "Enter your household above." :
+      days <= 14 ? `That's about ${containers(needed)}.` :
+      `One gallon per person per day${heat ? ", doubled for summer heat" : ""}. ` +
+      `Storing all of that isn't practical, so store about ${fmt(Math.ceil(storable))} gallons ` +
+      `— two weeks, roughly ${containers(storable)} — and cover the rest with a gravity filter ` +
+      `and a source you can refill from.`;
 
     const meals = Math.ceil(people * days * 3);
     $("r-meals").textContent = `${fmt(meals)} meals`;
