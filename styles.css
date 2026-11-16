@@ -178,3 +178,17 @@ nav.toc a[aria-current="page"] { background: var(--brand); color: #fff; border-c
     color: var(--muted); margin-top: 8px;
   }
   .chip-note { font-size: 14px; color: var(--muted); margin: 8px 0 0; }
+
+
+/* Comparison tables (microgreens, nutrient data) */
+.tablewrap { overflow-x: auto; margin: 14px 0; }
+table.data { width: 100%; border-collapse: collapse; font-size: 15px; }
+table.data th { background: var(--brand); color: var(--brand-ink); text-align: left;
+  font-size: 13px; letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; font-weight: 700; }
+table.data td { padding: 6px 10px; border-bottom: 1px solid var(--line); }
+table.data th.r, table.data td.r { text-align: right; font-variant-numeric: tabular-nums; }
+table.data tr.lead-row td { background: var(--accent-soft); font-weight: 700; }
+details.more { margin: 14px 0; border: 1px solid var(--line); border-radius: 14px;
+  background: var(--surface); padding: 0 18px; }
+details.more > summary { cursor: pointer; padding: 14px 0; font-weight: 600; color: var(--brand); }
+details.more[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: 14px; }
